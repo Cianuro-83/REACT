@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello world</title>
+  <!-- Load React via CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    const rootElement = document.getElementById( 'root' );
+    const root = ReactDOM.createRoot( rootElement );
+
+    const h1 = React.createElement( 'h1', {
+      key: 'title',
+      style: {
+        color: 'red',
+        width: '100%',
+        cursor: 'pointer',
+
+      },
+      className: 'title',
+      onClick: ele => {
+        console.log( ele.target );
+      },
+    },
+      'Ciao Mondo!, sto usando REACT tramite CDN!'
+    );
+
+    const ul = React.createElement( 'ul', {
+      className: 'list',
+      key: 'list',
+    },
+      [
+        React.createElement( 'li', { key: 'item1' }, 'Item 1' ),
+        React.createElement( 'li', { key: 'item2' }, 'Item 2' ),
+        React.createElement( 'li', { key: 'item3' }, 'Item 3' )
+      ]
+    );
+
+    const div = React.createElement( 'div', {
+      className: 'main',
+      style: {
+        backgroundColor: 'bisque',
+        borderRadius: '10px',
+        padding: '10px',
+      },
+    },
+      [h1, ul]
+    );
+    root.render( div );
+
+  </script>
+</body>
+
+</html>
