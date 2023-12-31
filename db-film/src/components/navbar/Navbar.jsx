@@ -1,7 +1,7 @@
 
 function Navbar() {
   return (
-    <div className='scb-navbar'>
+    <div className='scb-navbar container-fluid'>
       <nav className="navbar bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand fw-bolder text-warning"><i>Cianuro's Films</i></a>

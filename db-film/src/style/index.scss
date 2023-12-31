@@ -29,4 +29,13 @@ body{
   background-color: $bg-dark;
   color: $text-dark;
 }
-
+// COMPONENTE FILM CARD
+.scb-film-card{
+  .card{
+    .card-header{
+      background-color: $card-header-dark;
+    }
+    color: $text-dark;
+    background-color: $card-body-dark;
+  }
+}
