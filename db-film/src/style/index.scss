@@ -48,6 +48,14 @@ body{
   left: 50%;
   transform: translate(-50%,-50%);
 }
+
+//GESTIONE NO FILM
+.scb-noFilm{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 // COMPONENTE FILM CARD
 .scb-film-card{
   .card{
@@ -58,6 +66,7 @@ body{
       height: 25rem;
       width: 20rem;
       object-fit:scale-down;
+      margin: 0 auto;
     }
     
     color: $text-dark;
