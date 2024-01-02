@@ -7,19 +7,22 @@ import { useState } from 'react';
 function Start() {
   const api = 'https://www.omdbapi.com?apikey=4cb9def9';
   const apiParam = '&s=';
-  const [apiSearch, setApiSearch] = useState( 'commandos' );
+  const [apiSearch, setApiSearch] = useState( 'cianuro' );
   const { data, loading, error } = useFetch( api + apiParam + apiSearch );
+  const addSearch = ( search ) => {
+    setApiSearch( search );
+  };
 
   return (
     <div className='scb-start'>
-      <Navbar />
+      <Navbar addSearch={ addSearch } />
       <div className="contenuto container">
 
         <h1 className="text-center">Cianuro's Film</h1>
 
         { data && data.Response === 'True' ? (
           <p className="scb-info text-uppercase fs-3">
-            { ` ${data.Search && Array.isArray( data.Search ) ? data.Search.length : '0'}  risultati trovati` }
+            { `Risultati trovati:  ${data.Search && Array.isArray( data.Search ) ? data.Search.length : '0'}` }
           </p>
         ) : (
           <div className='d-flex flex-column scb-noFilm'>
