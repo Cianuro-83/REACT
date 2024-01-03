@@ -18,7 +18,7 @@ export function useFetch( url ) {
 
     // return () => abortController.abort();
   },
-    [] );
+    [url] );
 
   return { data, loading, error };
 

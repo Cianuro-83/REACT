@@ -1,9 +1,10 @@
 import Menubar from './Menubar';
 import Searchbar from './Searchbar';
 
-function Navbar( addSearch ) {
-  const addFilm = () => {
-    addSearch();
+function Navbar( { addSearch } ) {
+  const addFilm = ( search ) => {
+    addSearch( search );
+
   };
   return (
     <div className='scb-navbar container-fluid'>

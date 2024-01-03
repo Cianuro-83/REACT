@@ -7,11 +7,14 @@ import { useState } from 'react';
 function Start() {
   const api = 'https://www.omdbapi.com?apikey=4cb9def9';
   const apiParam = '&s=';
-  const [apiSearch, setApiSearch] = useState( 'cianuro' );
-  const { data, loading, error } = useFetch( api + apiParam + apiSearch );
+  const [apiSearch, setApiSearch] = useState( 'coliandro' );
+  const { data, loading, error } = useFetch( `${api}${apiParam}${apiSearch}` );
+  console.log( useFetch );
+
   const addSearch = ( search ) => {
     setApiSearch( search );
   };
+
 
   return (
     <div className='scb-start'>
