@@ -71,5 +71,26 @@ body{
     
     color: $text-dark;
     background-color: $card-body-dark;
+    
+  }
+}
+
+//COMPONENTE FILM DETAIL
+.scb-modal{
+  background-color: $bg-dark-trasparent;
+  color: $text-dark;
+  .scb-modal-title, 
+  .scb-modal-footer{
+    background-color:$card-header-dark;
+    justify-content: center;
+  }
+  .scb-modal-body{
+    background-color:$card-body-dark;
+  }
+  .scb-btn{
+    background-color: aqua;
+  }
+  .scb-trama{
+    text-align: justify;
   }
 }

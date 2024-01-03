@@ -3,17 +3,20 @@ import { useFetch } from '../utility/useFetch';
 import FilmCard from './card/FilmCard';
 import Loader from './loader/loader';
 import { useState } from 'react';
+import FilmDetail from './card/FilmDetail';
 
 function Start() {
   const api = 'https://www.omdbapi.com?apikey=4cb9def9';
   const apiParam = '&s=';
   const [apiSearch, setApiSearch] = useState( 'coliandro' );
-  const { data, loading, error } = useFetch( `${api}${apiParam}${apiSearch}` );
-  console.log( useFetch );
-
-  const addSearch = ( search ) => {
+  const apiUrl = `${api}${apiParam}${apiSearch}`;
+  const { data, loading, error } = useFetch( apiUrl );
+  const [filmSelezionato, setFilmSelezionato] = useState( 'tt1556087' );
+  const addSearch = ( search, filmId ) => {
     setApiSearch( search );
+    setFilmSelezionato( filmId );
   };
+
 
 
   return (
@@ -50,9 +53,11 @@ function Start() {
             uscita={ film.Year }
             id={ film.imdbID }
             type={ film.Type }
+            onSelectFilm={ ( filmId ) => addSearch( apiSearch, filmId ) }
           />
         ) ) }
       </div>
+      <FilmDetail film={ filmSelezionato } />
     </div>
   );
 }

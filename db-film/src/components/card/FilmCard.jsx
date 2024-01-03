@@ -1,5 +1,8 @@
 
-function FilmCard( { title, poster, uscita, id, type } ) {
+function FilmCard( { title, poster, uscita, id, type, onSelectFilm } ) {
+  const handleClick = () => {
+    onSelectFilm( id );
+  };
   return (
     <div className='scb-film-card'>
       <div className="card mt-5" >
@@ -18,7 +21,7 @@ function FilmCard( { title, poster, uscita, id, type } ) {
         <div className="card-body">
           <h5 className="card-title mb-4">Anno: { uscita }</h5>
           <h5 className="card-title mb-4">Tipo: { type }</h5>
-          <a href="#" className="btn btn-primary d-flex justify-content-center fw-bolder text-warning text-uppercase">Maggiori Informazioni</a>
+          <a onClick={ handleClick } data-bs-toggle="modal" data-bs-target="#staticBackdrop" href="#" className="btn btn-primary d-flex justify-content-center fw-bolder text-warning text-uppercase">Maggiori Informazioni</a>
         </div>
       </div>
     </div>
