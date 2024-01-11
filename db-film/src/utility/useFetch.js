@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export function useFetch( url ) {
   const [data, setData] = useState( null );
@@ -6,20 +7,24 @@ export function useFetch( url ) {
   const [error, setError] = useState( null );
 
   useEffect( () => {
-    // const abortController = new AbortController();
-    setLoading( true );
+    // const source = axios.CancelToken.source();
 
-    // fetch( url, { signal: abortController.signal } )
-    fetch( url )
-      .then( ( response ) => response.json() )
-      .then( ( data ) => setData( data ) )
-      .catch( ( error ) => setError( error ) )
-      .finally( () => setLoading( false ) );
+    axios
+      .get( url )
+      .then( ( response ) => {
+        setData( response.data );
 
-    // return () => abortController.abort();
-  },
-    [url] );
+      } )
+      .catch( ( error ) => {
+        setError( error );
+      } )
+      .finally( () => {
+        setLoading( false );
+      } );
+
+    // return () => source.cancel();
+  }, [url] );
 
   return { data, loading, error };
-
 }
+
