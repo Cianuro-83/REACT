@@ -6,6 +6,7 @@ import './style/index.scss';
 import Start from './components/Start';
 
 
+
 ReactDOM.createRoot( document.getElementById( 'root' ) ).render(
   <React.StrictMode>
     <Start />

@@ -5,11 +5,15 @@ import Loader from './loader/loader';
 import { useState } from 'react';
 import FilmDetail from './card/FilmDetail';
 
+
+
 function Start() {
-  const api = 'https://www.omdbapi.com?apikey=4cb9def9';
+  const api = 'https://www.omdbapi.com';
+  const apiKey = process.env.API_KEY;
+  console.log( "API KEY:", apiKey, "API URL:", api );
   const apiParam = '&s=';
   const [apiSearch, setApiSearch] = useState( 'coliandro' );
-  const apiUrl = `${api}${apiParam}${apiSearch}`;
+  const apiUrl = `${api}${apiKey}${apiParam}${apiSearch}`;
   const { data, loading, error } = useFetch( apiUrl );
   const [filmSelezionato, setFilmSelezionato] = useState( 'tt1556087' );
   const addSearch = ( search, filmId ) => {
