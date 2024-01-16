@@ -4,7 +4,7 @@ import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
 import FormUiGroupCheckbox from './formUi/FormUiGroupCheckbox';
-
+import FormUiGroupRadio from './formUi/FormUiGroupRadio';
 
 // MESSO QUI PER TEST, SICURAMENTE SINO VALORI DI API
 const selectValues = [
@@ -14,6 +14,7 @@ const selectValues = [
   { value: '4', label: 'Russia' },
   { value: '5', label: 'Grecia' },
 ];
+
 // MESSO QUI PER TEST, SICURAMENTE SINO VALORI DI API
 const formUIGroupCheckboxValues = [
   { value: '1', label: 'Comments', description: 'Descrizione', },
@@ -23,9 +24,17 @@ const formUIGroupCheckboxValues = [
   { value: '5', label: 'Other', description: 'Descrizione', },
   { value: '6', label: 'All', description: 'Descrizione', },
   { value: '7', label: 'None', description: 'Descrizione', },
-
 ];
 
+// MESSO QUI PER TEST, SICURAMENTE SINO VALORI DI API
+const formUIGroupRadioValues = [
+  { label: "Everithing", id: "everithing", value: "1", description: 'Descrizione', },
+  { label: "Newsletters", id: "newsletters", value: "2", description: 'Descrizione', },
+  { label: "Offers", id: "offers", value: "3", description: 'Descrizione', },
+  { label: "Promotions", id: "promotions", value: "4", description: 'Descrizione', },
+  { label: "Other", id: "other", value: "5", description: 'Descrizione', },
+
+];
 const Form = () => {
   const defaultValue = selectValues.find( ( item ) => item.default ) ? selectValues.find( ( item ) => item.default ).value : 1;
   const [form, setForm] = useState( {
@@ -33,7 +42,8 @@ const Form = () => {
     lastname: '',
     description: '',
     country: defaultValue,
-    notificationPush: [],
+    notificationType: [],
+    notificationPush: null,
   } );
   return (
     <>
@@ -88,10 +98,19 @@ const Form = () => {
           title="Notification"
           values={ formUIGroupCheckboxValues }
           onChange={ ( selected ) => {
-            setForm( { ...form, notificationPush: selected } );
+            setForm( { ...form, notificationType: selected } );
           } }
         />
 
+        <FormUiGroupRadio
+          nameGroup="push-notifications"
+          title="Push Notifications"
+          values={ formUIGroupRadioValues }
+          onChange={ ( e ) => {
+            const val = e.target.value;
+            setForm( { ...form, notificationPush: parseInt( val, 0 ) } );
+          } }
+        />
 
 
       </form>
