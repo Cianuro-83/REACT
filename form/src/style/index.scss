@@ -38,3 +38,24 @@ body{
     grid-template-columns: repeat(1, 1fr);
     }
 }
+//TESTO DESCRIZIONE CHECKBOX
+.scb-description-checkbox{
+  font-size: 9px;
+}
+//ALLINEAMENTO DELLA CHECBOX
+.scb-checkbox-allineament{
+  display: flex;
+  align-items:flex-center;
+  input{
+    transform: translateY(-7px);
+  }
+}
+//DISPOSIZIONE DELLE CHECKBOX
+.scb-checkbox-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    }
+}
