@@ -4,7 +4,7 @@ const FormUiSelect = ( { id, label, values, onChange, defaultValue } ) => {
   return (
     <div>
       <div className='d-flex flex-column'>
-        <label htmlFor={ id }>{ label }</label>
+        <label className='fw-bolder' htmlFor={ id }>{ label }</label>
         <select
           name={ id }
           id={ id }

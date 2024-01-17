@@ -5,6 +5,7 @@ import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
 import FormUiGroupCheckbox from './formUi/FormUiGroupCheckbox';
 import FormUiGroupRadio from './formUi/FormUiGroupRadio';
+import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
 
 // MESSO QUI PER TEST, SICURAMENTE SINO VALORI DI API
 const selectValues = [
@@ -44,6 +45,7 @@ const Form = () => {
     country: defaultValue,
     notificationType: [],
     notificationPush: null,
+    files: null
   } );
   return (
     <>
@@ -112,6 +114,14 @@ const Form = () => {
           } }
         />
 
+        <FormUiFiles
+
+          id="myfile"
+          label="UploadFile"
+          onAddFiles={ ( files ) => {
+            setForm( { ...form, files: files } );
+          } }
+        />
 
       </form>
       <div className='container bg-primary text-dark fw-bolder fs-4'>

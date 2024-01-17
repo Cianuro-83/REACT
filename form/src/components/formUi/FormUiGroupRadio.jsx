@@ -4,7 +4,7 @@ import FormUiRadio from './FormUiRadio';
 const FormUiGroupRadio = ( { values, onChange, title, nameGroup } ) => {
   return (
     <div>
-      <p>{ title }</p>
+      <p className='fw-bolder'>{ title }</p>
       <div className='scb-checkbox-grid'>
         { values.map( ( radio, i ) => (
           <div key={ i }>

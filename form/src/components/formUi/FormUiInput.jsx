@@ -4,7 +4,7 @@ const FormUiInput = ( { id, label, placeholder, value, onChange } ) => {
   return (
     <div>
       <div className='d-flex flex-column'>
-        <label htmlFor={ id }>{ label }</label>
+        <label className='fw-bolder' htmlFor={ id }>{ label }</label>
         <input
           className='border-3 border-gray p-2'
           id={ id }

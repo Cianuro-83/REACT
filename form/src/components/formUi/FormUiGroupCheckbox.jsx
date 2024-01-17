@@ -22,7 +22,7 @@ const FormUiGroupCheckbox = ( { values, onChange, title } ) => {
   };
   return (
     <div>
-      <p>{ title }</p>
+      <p className='fw-bolder'>{ title }</p>
       <div className='scb-checkbox-grid'>
         { values.map( ( chechkbox, i ) => <FormUiCheckbox
           key={ i }
