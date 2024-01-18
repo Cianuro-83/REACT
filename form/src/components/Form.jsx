@@ -67,6 +67,14 @@ const Form = () => {
     } );
   };
 
+  const isFormEmpty = Object.entries( form ).every( ( [key, value] ) => {
+    if ( key === 'country' ) {
+      return value === defaultValue;
+    }
+    return value === '' || value === null || ( Array.isArray( value ) && value.length === 0 );
+  } );
+
+
   return (
     <>
       <form className='container' onSubmit={ handleSubmit }>
@@ -128,19 +136,25 @@ const Form = () => {
           ref={ fileInputRef }
         />
 
-        <div className="scb-form-button">
-          <FormResetButton
-            onReset={ handleReset }
-            defaultValue={ defaultValue }
-            fileInputRef={ fileInputRef }
-            formUIGroupRadioValues={ formUIGroupRadioValues }
-            formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
-          />
+        { !isFormEmpty && (
+          <div className="scb-form-button">
+            <FormResetButton
+              onReset={ handleReset }
+              defaultValue={ defaultValue }
+              fileInputRef={ fileInputRef }
+              formUIGroupRadioValues={ formUIGroupRadioValues }
+              formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
+            />
+            <button className="btn btn-success text-uppercase fw-bold" type="submit">
+              Submit
+            </button>
+          </div>
+        ) }
 
-          <button className="btn btn-success text-uppercase fw-bold" type="submit">
-            Submit
-          </button>
-        </div>
+
+
+
+
       </form>
 
       <div className='container bg-primary text-dark fw-bolder fs-4'>
