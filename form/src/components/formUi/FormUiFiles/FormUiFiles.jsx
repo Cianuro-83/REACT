@@ -3,7 +3,7 @@ import FormUiSelectFile from './FormUiSelectFile';
 import FormUiListFiles from './FormUiListFilles';
 import Upload from '../../../assets/upload-file.svg';
 
-const FormUiFiles = ( { id, label, onAddFiles } ) => {
+const FormUiFiles = ( { id, label, onAddFiles, multiple } ) => {
   const [files, setFiles] = useState( [] );
 
   useEffect( () => {
@@ -28,20 +28,39 @@ const FormUiFiles = ( { id, label, onAddFiles } ) => {
       <p className='fw-bolder '>{ label }</p>
       <div className="scb-upload-box">
         <img src={ Upload } alt="" />
+
         <div>
-          {/* // per file singoli ()vedi o bottone carica o la lista */ }
-          { !visibleSelectFile() && (
-            <FormUiSelectFile id={ id } handleFiles={ handleFiles } />
-          ) }
-          { visibleSelectFile() && (
-            <FormUiListFiles files={ files } handleRemoveFile={ handleRemoveFile } />
-          ) }
+          { !multiple ?
+            ( <div>
+              {/* per file singoli ()vedi o bottone carica o la lista  */ }
+              { !visibleSelectFile() && (
+                <FormUiSelectFile id={ id } handleFiles={ handleFiles } />
+              ) }
+              { visibleSelectFile() && (
+                <FormUiListFiles files={ files } handleRemoveFile={ handleRemoveFile } />
+              ) }
+            </div> ) :
+            // PER FILE MULTIPLI VEDI SIA CARICA CHE LISTA
+            <div>
+              { files.length > 0 && visibleSelectFile() ? (
+                // Se ci sono file presenti e sono visibili, mostra sia il selettore che la lista
+                <>
+                  <FormUiSelectFile id={ id } handleFiles={ handleFiles } multiple={ multiple } />
+                  <FormUiListFiles files={ files } handleRemoveFile={ handleRemoveFile } />
+                </>
+              ) : (
+                // Altrimenti, mostra solo il selettore
+                <FormUiSelectFile id={ id } handleFiles={ handleFiles } multiple={ multiple } />
+              ) }
+            </div>
+
+          }
+
+
         </div>
-        {/* PER FILE MULTIPLI (VEDI SIA CARICA CHE LISTA)
-      <div>
-        <FormUiSelectFile id={ id } handleFiles={ handleFiles } />
-        <FormUiListFiles files={ files } handleRemoveFile={ handleRemoveFile } />
-      </div> */}
+
+
+
       </div>
 
     </>
