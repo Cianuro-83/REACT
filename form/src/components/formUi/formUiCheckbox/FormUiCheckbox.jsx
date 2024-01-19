@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormUiCheckbox = ( { id, label, value, onChange, description } ) => {
+const FormUiCheckbox = ( { id, label, value, onChange, description, } ) => {
   return (
     <div>
       <div className='scb-checkbox-allineament'>

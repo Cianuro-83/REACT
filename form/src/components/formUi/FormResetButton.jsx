@@ -13,7 +13,7 @@ const FormResetButton = ( { onReset, defaultValue, fileInputRef, formUIGroupRadi
       onClick={ handleClick }
       className="btn btn-danger text-uppercase fw-bold"
     >
-      svuota
+      svuota form
     </button>
   );
 };

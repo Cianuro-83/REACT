@@ -3,17 +3,17 @@ import FormUiHeader from './formUi/FormUiHeader';
 import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
-import FormUiGroupCheckbox from './formUi/FormUiGroupCheckbox';
+import FormUiGroupCheckbox from './formUi/formUiCheckbox/FormUiGroupCheckbox';
 import FormUiGroupRadio from './formUi/FormUiGroupRadio';
 import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
 import FormResetButton from './formUi/FormResetButton';
 import { selectValues, formUIGroupCheckboxValues, formUIGroupRadioValues } from './formUi/formUtility/formData';
 import { handleSubmit } from './formUi/formUtility/formSubmit';
-import { validateFirstName, validateTextArea } from './formUi/formUtility/validateForm';
+import { validateFirstName, validateTextArea, validateSelect, validateCheckbox } from './formUi/formUtility/validateForm';
 
 
 const Form = () => {
-  const defaultValue = selectValues.find( item => item.default )?.value || '1';
+  const defaultValue = selectValues.find( item => item.default )?.value || 0;
   const [form, setForm] = useState( {
     firstname: '',
     lastname: '',
@@ -41,18 +41,14 @@ const Form = () => {
     } );
   };
 
-  const isFormEmpty = Object.entries( form ).every( ( [key, value] ) => {
-    if ( key === 'country' ) {
-      return value === defaultValue;
-    }
-    return value === '' || value === null || ( Array.isArray( value ) && value.length === 0 );
-  } );
-
   const handleFormSubmit = ( e ) => {
     const fields = {
       firstname: validateFirstName,
       lastname: validateFirstName,
-      description: validateTextArea
+      description: validateTextArea,
+      country: validateSelect,
+      notificationType: validateCheckbox,
+
       // ... altri campi e funzioni di validazione ...
     };
 
@@ -104,15 +100,18 @@ const Form = () => {
         <FormUiSelect
           id="country"
           label="Country"
+          selectFakeValue="Scegli una nazione"
           values={ selectValues }
           defaultValue={ defaultValue }
           onChange={ ( e ) => setForm( { ...form, country: parseInt( e.target.value, 10 ) } ) }
+          error={ errors.country }
         />
 
         <FormUiGroupCheckbox
           title="Notification"
           values={ formUIGroupCheckboxValues }
           onChange={ ( selected ) => setForm( { ...form, notificationType: selected } ) }
+          error={ errors.notificationType }
         />
 
         <FormUiGroupRadio
@@ -131,20 +130,20 @@ const Form = () => {
         />
         {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }
         <div>
-          { !isFormEmpty && (
-            <div className="scb-form-button">
-              <FormResetButton
-                onReset={ handleReset }
-                defaultValue={ defaultValue }
-                fileInputRef={ fileInputRef }
-                formUIGroupRadioValues={ formUIGroupRadioValues }
-                formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
-              />
-              <button className="btn btn-success text-uppercase fw-bold" type="submit">
-                Submit
-              </button>
-            </div>
-          ) }
+
+          <div className="scb-form-button">
+            <FormResetButton
+              onReset={ handleReset }
+              defaultValue={ defaultValue }
+              fileInputRef={ fileInputRef }
+              formUIGroupRadioValues={ formUIGroupRadioValues }
+              formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
+            />
+            <button className="btn btn-success text-uppercase fw-bold" type="submit">
+              Submit
+            </button>
+          </div>
+
         </div>
 
 

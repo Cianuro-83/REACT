@@ -26,3 +26,19 @@ export const validateTextArea = ( text ) => {
   return null;
 };
 
+// SELECT
+export const validateSelect = ( value ) => {
+  if ( value === 0 ) {
+    return 'Dato Richiesto.';
+  }
+  return null;
+};
+
+// CHECKBOX
+export const validateCheckbox = ( value ) => {
+  if ( value.length < 1 ) {
+    return 'Dato Richiesto.';
+  } else if ( value.length > 3 )
+    return 'Puoi selezionare al massimo 3 opzioni.';
+  return null;
+};

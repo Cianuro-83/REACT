@@ -20,8 +20,10 @@ const FormUiTextArea = ( { id, label, rows, placeholder, value, onChange, error 
     const charsUsed = inputValue.length;
     const newRemainingChars = 1000 - charsUsed;
 
-    setRemainingChars( newRemainingChars );
-    onChange( e ); // Chiamata alla funzione di onChange per aggiornare il valore del textarea nel componente padre
+    if ( newRemainingChars >= 0 ) {
+      setRemainingChars( newRemainingChars );
+      onChange( e ); // Chiamata alla funzione di onChange per aggiornare il valore del textarea nel componente padre
+    }
   };
 
   return (
@@ -32,7 +34,7 @@ const FormUiTextArea = ( { id, label, rows, placeholder, value, onChange, error 
           <span className={ `ms-2 text-${calculateColor()}` }>{ remainingChars }</span>
         </label>
         <textarea
-          className={ `border-3 border-${calculateColor} p-2 ${error ? 'border-danger border-4' : ''}` }
+          className={ `border-3 border-${calculateColor()} p-2 ${error ? 'border-danger border-4' : ''}` }
           id={ id }
           name={ id }
           type="text"
