@@ -7,6 +7,7 @@ import FormUiGroupCheckbox from './formUi/FormUiGroupCheckbox';
 import FormUiGroupRadio from './formUi/FormUiGroupRadio';
 import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
 import FormResetButton from './formUi/FormResetButton';
+import { validateFirstName } from './formUi/validateForm';
 
 // questi valori sono d'esempio... i dati arriveranno da api
 const selectValues = [
@@ -48,13 +49,11 @@ const Form = () => {
     notificationPush: null,
     files: null
   } );
+  const [errors, setErrors] = useState( {
+    firstname: null,
+    lastname: null,
+  } );
   const fileInputRef = useRef( null );
-
-  const handleSubmit = ( e ) => {
-    e.preventDefault();
-    console.log( form );
-  };
-
   const handleReset = () => {
     setForm( {
       firstname: '',
@@ -74,6 +73,41 @@ const Form = () => {
     return value === '' || value === null || ( Array.isArray( value ) && value.length === 0 );
   } );
 
+  const handleSubmit = ( e ) => {
+    e.preventDefault();
+
+    // Definisci un oggetto con i campi e le rispettive funzioni di validazione
+    const fields = {
+      firstname: validateFirstName,
+      // lastname: validateLastName,
+      // Aggiungi gli altri campi e le relative funzioni di validazione
+    };
+
+    // Oggetto per contenere gli errori dei campi
+    const fieldErrors = {};
+
+    // Verifico e aggiorno lo stato degli errori per ogni campo
+    let hasError = false;
+    for ( const field in fields ) {
+      const error = fields[field]( form[field] );
+      fieldErrors[field] = error; // Aggiorno lo stato degli errori per il campo corrente
+      if ( error !== null ) {
+        console.log( `Form non inviato a causa di un errore nel campo ${field}.` );
+        hasError = true;
+      }
+    }
+
+    // Aggiorna lo stato degli errori con l'oggetto contenente gli errori dei campi
+    setErrors( fieldErrors );
+
+    // Se ci sono errori, interrompi l'invio del modulo
+    if ( hasError ) {
+      return;
+    }
+
+    // INVIO IL FORM
+    console.log( "Form inviato con successo!", form );
+  };
 
   return (
     <>
@@ -88,13 +122,16 @@ const Form = () => {
             placeholder={ 'Inserisci il tuo nome' }
             value={ form.firstname }
             onChange={ ( e ) => setForm( { ...form, firstname: e.target.value } ) }
+            error={ errors.firstname }
           />
+
           <FormUiInput
             id="lastname"
             label="Last Name"
             placeholder={ 'Inserisci il tuo cognome' }
             value={ form.lastname }
             onChange={ ( e ) => setForm( { ...form, lastname: e.target.value } ) }
+            error={ errors.lastname }
           />
         </div>
 
@@ -131,25 +168,29 @@ const Form = () => {
         <FormUiFiles
           id="myfile"
           label="UploadFile"
-          multiple={ true }
+          multiple={ false }
           onAddFiles={ ( files ) => setForm( { ...form, files } ) }
-          ref={ fileInputRef }
+        // ref={ fileInputRef }
         />
+        {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }
+        <div>
+          { !isFormEmpty && (
+            <div className="scb-form-button">
+              <FormResetButton
+                onReset={ handleReset }
+                defaultValue={ defaultValue }
+                fileInputRef={ fileInputRef }
+                formUIGroupRadioValues={ formUIGroupRadioValues }
+                formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
+              />
+              <button className="btn btn-success text-uppercase fw-bold" type="submit">
+                Submit
+              </button>
+            </div>
+          ) }
+        </div>
 
-        { !isFormEmpty && (
-          <div className="scb-form-button">
-            <FormResetButton
-              onReset={ handleReset }
-              defaultValue={ defaultValue }
-              fileInputRef={ fileInputRef }
-              formUIGroupRadioValues={ formUIGroupRadioValues }
-              formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
-            />
-            <button className="btn btn-success text-uppercase fw-bold" type="submit">
-              Submit
-            </button>
-          </div>
-        ) }
+
 
 
 
