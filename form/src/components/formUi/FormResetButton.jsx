@@ -1,5 +1,5 @@
 import React from 'react';
-import { resetForm } from './formResetLogic';
+import { resetForm } from './formUtility/formResetLogic';
 
 const FormResetButton = ( { onReset, defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues } ) => {
   const handleClick = () => {
