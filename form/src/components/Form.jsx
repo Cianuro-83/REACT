@@ -9,7 +9,7 @@ import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
 import FormResetButton from './formUi/FormResetButton';
 import { selectValues, formUIGroupCheckboxValues, formUIGroupRadioValues } from './formUi/formUtility/formData';
 import { handleSubmit } from './formUi/formUtility/formSubmit';
-import { validateFirstName } from './formUi/formUtility/validateForm';
+import { validateFirstName, validateTextArea } from './formUi/formUtility/validateForm';
 
 
 const Form = () => {
@@ -51,6 +51,8 @@ const Form = () => {
   const handleFormSubmit = ( e ) => {
     const fields = {
       firstname: validateFirstName,
+      lastname: validateFirstName,
+      description: validateTextArea
       // ... altri campi e funzioni di validazione ...
     };
 
@@ -72,6 +74,7 @@ const Form = () => {
           <FormUiInput
             id="firstname"
             label="First Name"
+            type={ 'text' }
             placeholder={ 'Inserisci il tuo nome' }
             value={ form.firstname }
             onChange={ ( e ) => setForm( { ...form, firstname: e.target.value } ) }
@@ -95,6 +98,7 @@ const Form = () => {
           placeholder="Inserisci una descrizione"
           value={ form.description }
           onChange={ ( e ) => setForm( { ...form, description: e.target.value } ) }
+          error={ errors.description }
         />
 
         <FormUiSelect
