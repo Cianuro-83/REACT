@@ -48,7 +48,7 @@ const FormUiFiles = ( { id, label, onAddFiles, multiple, fileType, maxFileSize, 
 
   return (
     <>
-      <p className='fw-bolder'>{ label }</p>
+      <p className={ `fw-bolder ${error ? 'text-danger' : ''} ${fileError ? 'text-danger' : ''}` }>{ label }</p>
       <div className={ `scb-upload-box  ${error ? 'border border-danger border-4' : ''} ${fileError ? 'border border-danger border-4' : ''}` }>
 
         <img src={ Upload } alt="" />
