@@ -1,7 +1,7 @@
 import React from 'react';
 import { resetForm } from './formUtility/formResetLogic';
 
-const FormResetButton = ( { onReset, defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues, setErrors } ) => {
+const FormResetButton = ( { onReset, defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues, } ) => {
   const handleClick = () => {
     resetForm( defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues, onReset );
   };

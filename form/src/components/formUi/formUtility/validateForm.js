@@ -50,3 +50,30 @@ export const validateRadio = ( value ) => {
   }
   return '';
 };
+
+// FILES
+export const validateFile = ( file, fileType, maxFileSize ) => {
+  const errors = {};
+
+  // Verifica se il file è stato selezionato
+  if ( !file && file.length === 0 ) {
+    errors.general = 'Il file è obbligatorio. Seleziona un file.';
+    return errors;
+  }
+
+  // Validazione del tipo di file
+  if ( fileType && fileType.length > 0 ) {
+    const allowedTypes = fileType.split( ',' );
+    if ( !allowedTypes.includes( file.type ) ) {
+      errors.type = `Il file deve essere di tipo ${fileType}`;
+    }
+  }
+
+  // Validazione del peso massimo
+  if ( maxFileSize && file.size > maxFileSize ) {
+    errors.size = `Il file deve essere inferiore a ${maxFileSize / ( 1024 * 1024 )} MB`;
+  }
+
+  return errors;
+};
+

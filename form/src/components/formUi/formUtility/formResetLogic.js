@@ -1,4 +1,4 @@
-export const resetForm = ( defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues, handleReset, setErrors ) => {
+export const resetForm = ( defaultValue, fileInputRef, formUIGroupRadioValues, formUIGroupCheckboxValues, handleReset, ) => {
   handleReset();
 
   document.getElementById( 'country' ).value = defaultValue;
@@ -11,7 +11,7 @@ export const resetForm = ( defaultValue, fileInputRef, formUIGroupRadioValues, f
     document.getElementById( checkbox.value ).checked = false;
   } );
 
-  if ( fileInputRef.current ) {
-    fileInputRef.current.value = '';
-  }
+  // if ( fileInputRef.current ) {
+  //   fileInputRef.current.value = '';
+  // }
 };

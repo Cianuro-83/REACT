@@ -32,7 +32,7 @@ const Form = () => {
     notificationPush: null,
     files: null,
   } );
-
+  const [fileError, setFileError] = useState( null );
   const fileInputRef = useRef( null );
   const handleReset = () => {
     setForm( {
@@ -44,6 +44,7 @@ const Form = () => {
       notificationPush: null,
       files: null
     } );
+
     setErrors( {
       firstname: null,
       lastname: null,
@@ -53,7 +54,11 @@ const Form = () => {
       notificationPush: null,
       files: null
     } );
+
+    // Aggiungi questa linea per resettare gli errori dei file
+    setFileError( null );
   };
+
 
   const handleFormSubmit = ( e ) => {
     const fields = {
@@ -63,6 +68,14 @@ const Form = () => {
       country: validateSelect,
       notificationType: validateCheckbox,
       notificationPush: validateRadio,
+      files: ( value ) => {
+        if ( !value || value.length === 0 ) {
+          return 'Dato Richiesto.';
+        }
+        return null;
+      },
+
+
 
       // ... altri campi e funzioni di validazione ...
     };
@@ -141,9 +154,14 @@ const Form = () => {
           id="myfile"
           label="UploadFile"
           multiple={ false }
+          required={ false }
           onAddFiles={ ( files ) => setForm( { ...form, files } ) }
-        // ref={ fileInputRef }
+          fileType="image/jpeg,image/png,image/svg"
+          maxFileSize={ 1024 * 1024 }
+          error={ errors.files }
+          setFileError={ setFileError }
         />
+
         {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }
         <div>
 
