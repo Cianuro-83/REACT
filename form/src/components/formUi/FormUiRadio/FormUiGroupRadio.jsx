@@ -1,11 +1,11 @@
 import React from 'react';
 import FormUiRadio from './FormUiRadio';
 
-const FormUiGroupRadio = ( { values, onChange, title, nameGroup } ) => {
+const FormUiGroupRadio = ( { values, onChange, title, nameGroup, error } ) => {
   return (
     <div>
-      <p className='fw-bolder'>{ title }</p>
-      <div className='scb-checkbox-grid'>
+      <p className={ `fw-bolder ${error ? 'text-danger' : ''}` }>{ title }</p>
+      <div className={ `scb-checkbox-grid p-2 ${error ? 'border border-danger border-4' : ''}` }>
         { values.map( ( radio, i ) => (
           <div key={ i }>
             <FormUiRadio
@@ -19,6 +19,7 @@ const FormUiGroupRadio = ( { values, onChange, title, nameGroup } ) => {
           </div>
         ) ) }
       </div>
+      { error && <p className='text-danger fw-bold'>{ error }</p> }
     </div>
   );
 };

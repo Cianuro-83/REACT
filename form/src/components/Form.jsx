@@ -4,12 +4,12 @@ import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
 import FormUiGroupCheckbox from './formUi/formUiCheckbox/FormUiGroupCheckbox';
-import FormUiGroupRadio from './formUi/FormUiGroupRadio';
+import FormUiGroupRadio from './formUi/FormUiRadio/FormUiGroupRadio';
 import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
 import FormResetButton from './formUi/FormResetButton';
 import { selectValues, formUIGroupCheckboxValues, formUIGroupRadioValues } from './formUi/formUtility/formData';
 import { handleSubmit } from './formUi/formUtility/formSubmit';
-import { validateFirstName, validateTextArea, validateSelect, validateCheckbox } from './formUi/formUtility/validateForm';
+import { validateFirstName, validateTextArea, validateSelect, validateCheckbox, validateRadio } from './formUi/formUtility/validateForm';
 
 
 const Form = () => {
@@ -26,6 +26,11 @@ const Form = () => {
   const [errors, setErrors] = useState( {
     firstname: null,
     lastname: null,
+    description: null,
+    country: null,
+    notificationType: null,
+    notificationPush: null,
+    files: null,
   } );
 
   const fileInputRef = useRef( null );
@@ -39,6 +44,15 @@ const Form = () => {
       notificationPush: null,
       files: null
     } );
+    setErrors( {
+      firstname: null,
+      lastname: null,
+      description: null,
+      country: null,
+      notificationType: null,
+      notificationPush: null,
+      files: null
+    } );
   };
 
   const handleFormSubmit = ( e ) => {
@@ -48,6 +62,7 @@ const Form = () => {
       description: validateTextArea,
       country: validateSelect,
       notificationType: validateCheckbox,
+      notificationPush: validateRadio,
 
       // ... altri campi e funzioni di validazione ...
     };
@@ -119,6 +134,7 @@ const Form = () => {
           title="Push Notifications"
           values={ formUIGroupRadioValues }
           onChange={ ( e ) => setForm( { ...form, notificationPush: parseInt( e.target.value, 10 ) } ) }
+          error={ errors.notificationPush }
         />
 
         <FormUiFiles

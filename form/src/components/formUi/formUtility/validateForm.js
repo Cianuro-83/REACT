@@ -42,3 +42,11 @@ export const validateCheckbox = ( value ) => {
     return 'Puoi selezionare al massimo 3 opzioni.';
   return null;
 };
+// RADIO
+// RADIO
+export const validateRadio = ( value ) => {
+  if ( !value || value.length < 1 ) {
+    return 'Dato Richiesto.';
+  }
+  return '';
+};

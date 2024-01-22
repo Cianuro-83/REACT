@@ -62,7 +62,9 @@ const FormUiFiles = ( { id, label, onAddFiles, multiple } ) => {
 
 
       </div>
-
+      { fileError && (
+        <p className="text-danger mt-2">{ fileError }</p>
+      ) }
     </>
   );
 };
