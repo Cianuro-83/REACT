@@ -1,15 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import FormUiHeader from './formUi/FormUiHeader';
 import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
 import FormUiGroupCheckbox from './formUi/formUiCheckbox/FormUiGroupCheckbox';
 import FormUiGroupRadio from './formUi/FormUiRadio/FormUiGroupRadio';
-import FormUiFiles from './formUi/FormUiFiles/FormUiFiles';
-import FormResetButton from './formUi/FormResetButton';
+import FormUiDropFile from './formUi/FormUiDropFile';
+import FormResetButton from './formUi/formUtility/FormResetButton';
+import FormSubmitButton from './formUi/formUtility/FormSubmitButton';
 import { selectValues, formUIGroupCheckboxValues, formUIGroupRadioValues } from './formUi/formUtility/formData';
 import { handleSubmit } from './formUi/formUtility/formSubmit';
 import { validateFirstName, validateTextArea, validateSelect, validateCheckbox, validateRadio } from './formUi/formUtility/validateForm';
+
 
 
 const Form = () => {
@@ -21,7 +23,7 @@ const Form = () => {
     country: defaultValue,
     notificationType: [],
     notificationPush: null,
-    files: null
+    files: []
   } );
   const [errors, setErrors] = useState( {
     firstname: null,
@@ -32,8 +34,7 @@ const Form = () => {
     notificationPush: null,
     files: null,
   } );
-  const [fileError, setFileError] = useState( null );
-  const fileInputRef = useRef( null );
+  const [fileKey, setFileKey] = useState( Date.now() ); // Aggiungo uno stato per forzare la rimontaggio dell'input file
   const handleReset = () => {
     setForm( {
       firstname: '',
@@ -42,9 +43,8 @@ const Form = () => {
       country: defaultValue,
       notificationType: [],
       notificationPush: null,
-      files: null
+      files: null,
     } );
-
     setErrors( {
       firstname: null,
       lastname: null,
@@ -52,13 +52,11 @@ const Form = () => {
       country: null,
       notificationType: null,
       notificationPush: null,
-      files: null
+      files: null,
     } );
-
-    // Aggiungi questa linea per resettare gli errori dei file
-    setFileError( null );
+    // Forzo il rimontaggio dell'input file
+    setFileKey( Date.now() );
   };
-
 
   const handleFormSubmit = ( e ) => {
     const fields = {
@@ -68,16 +66,8 @@ const Form = () => {
       country: validateSelect,
       notificationType: validateCheckbox,
       notificationPush: validateRadio,
-      files: ( value ) => {
-        if ( !value || value.length === 0 ) {
-          return 'Dato Richiesto.';
-        }
-        return null;
-      },
 
-
-
-      // ... altri campi e funzioni di validazione ...
+      // ... altri campi da validare
     };
 
     const success = handleSubmit( e, form, fields, setErrors );
@@ -150,17 +140,26 @@ const Form = () => {
           error={ errors.notificationPush }
         />
 
-        <FormUiFiles
+
+
+        <FormUiDropFile
+          key={ fileKey } // Aggiungi la chiave per forzare il rimontaggio
           id="myfile"
           label="UploadFile"
-          multiple={ false }
-          required={ false }
+          multiple={ true }
+          minFiles={ 0 }
+          validationFunction={ ( files ) => [minFileValidator( files, 1 )] }
+          maxFiles={ 3 }
+          maxSize={ 1024 * 1024 }
+          accept={ {
+            // "image/png": [],
+            // "image/svg+xml": []
+            "image/*": []
+          } }
+          info="Campo RICHIESTO: solo un file, png / svg del peso max di 1024kb"
           onAddFiles={ ( files ) => setForm( { ...form, files } ) }
-          fileType="image/jpeg,image/png,image/svg"
-          maxFileSize={ 1024 * 1024 }
-          error={ errors.files }
-          setFileError={ setFileError }
         />
+
 
         {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }
         <div>
@@ -169,22 +168,13 @@ const Form = () => {
             <FormResetButton
               onReset={ handleReset }
               defaultValue={ defaultValue }
-              fileInputRef={ fileInputRef }
               formUIGroupRadioValues={ formUIGroupRadioValues }
               formUIGroupCheckboxValues={ formUIGroupCheckboxValues }
             />
-            <button className="btn btn-success text-uppercase fw-bold" type="submit">
-              Submit
-            </button>
+            <FormSubmitButton />
           </div>
 
         </div>
-
-
-
-
-
-
 
       </form>
 

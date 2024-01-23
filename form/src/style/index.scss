@@ -121,6 +121,59 @@ body{
       }
   }
 }
+//INFO UPLOAD
+.scb-info-upload{
+  position: relative;
+  .scb-info-icon{
+    position: absolute;
+    top: 20px;
+    @media screen and (max-width: 500px) {
+      right: 20%;
+      }
+      @media screen and (min-width: 770px) {
+        right: 7%;
+        }
+        @media screen and (max-width: 990px) {
+          right: 7%;
+          }
+          @media screen and (min-width: 1024px) {
+            right: 5%;
+            }
+   
+    color: red;
+  }
+}
+
+// DROP ZONE
+.scb-drop{
+  background-color: $uploader-box-bg;
+  margin-bottom: 1.5rem;
+  color: black;
+  padding: 1rem;
+  border: $dashed-border;
+  display:flex ;
+  flex-direction: column;
+  position: relative;
+  background-position: center;
+  background-size: 8%;
+  cursor:pointer;
+  .scb-drag-info, p{
+    color:$uploader-info-text;
+    .scb-info{
+      
+    };
+  }
+  .scb-upload{
+    max-width: 100px;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    z-index: 100;
+  }
+ 
+  p{
+    text-align: center;
+  }
+}
 // BORDO BOX UPLOAD
 .scb-dashed{
   border: $dashed-border;
@@ -130,5 +183,5 @@ body{
   display: flex;
   justify-content: flex-end;
   gap : 1rem;
- 
+
 }
