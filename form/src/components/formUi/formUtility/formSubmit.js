@@ -1,4 +1,3 @@
-// formUtils.js
 
 export const handleSubmit = ( e, form, fields, setErrors ) => {
   e.preventDefault();

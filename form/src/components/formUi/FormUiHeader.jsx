@@ -1,9 +1,9 @@
 import React from 'react';
 
-const FormUiHeader = ( { title, subtitle } ) => {
+const FormUiHeader = ( { classBox, classTitle, title, subtitle } ) => {
   return (
-    <div className='border p-3'>
-      <h3>{ title }</h3>
+    <div className={ classBox }>
+      <h3 className={ classTitle }>{ title }</h3>
       <p>{ subtitle }</p>
 
     </div>

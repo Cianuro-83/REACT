@@ -10,7 +10,7 @@ const FormUiSelect = ( { id, label, values, onChange, defaultValue, selectFakeVa
           defaultValue={ defaultValue }
           onChange={ onChange }
         >
-          {/* Aggiungi l'opzione con value 0 e label selectFakeValue */ }
+          {/* Se non presente il DefaultValue lo setto a 0 */ }
           <option value="0">{ selectFakeValue }</option>
 
           { values.map( ( val, i ) => (

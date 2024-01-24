@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import FormUiHeader from './formUi/FormUiHeader';
 import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
@@ -13,7 +13,6 @@ import { handleSubmit } from './formUi/formUtility/formSubmit';
 import { validateFirstName, validateTextArea, validateSelect, validateCheckbox, validateRadio } from './formUi/formUtility/validateForm';
 
 
-
 const Form = () => {
   const defaultValue = selectValues.find( item => item.default )?.value || 0;
   const [form, setForm] = useState( {
@@ -23,7 +22,7 @@ const Form = () => {
     country: defaultValue,
     notificationType: [],
     notificationPush: null,
-    files: []
+    files: null,
   } );
   const [errors, setErrors] = useState( {
     firstname: null,
@@ -34,7 +33,7 @@ const Form = () => {
     notificationPush: null,
     files: null,
   } );
-  const [fileKey, setFileKey] = useState( Date.now() ); // Aggiungo uno stato per forzare la rimontaggio dell'input file
+
   const handleReset = () => {
     setForm( {
       firstname: '',
@@ -43,7 +42,6 @@ const Form = () => {
       country: defaultValue,
       notificationType: [],
       notificationPush: null,
-      files: null,
     } );
     setErrors( {
       firstname: null,
@@ -52,22 +50,18 @@ const Form = () => {
       country: null,
       notificationType: null,
       notificationPush: null,
-      files: null,
     } );
-    // Forzo il rimontaggio dell'input file
-    setFileKey( Date.now() );
   };
 
   const handleFormSubmit = ( e ) => {
     const fields = {
+      // Campi da validare (nomeCampo: funzioneDiValidazione,)
       firstname: validateFirstName,
       lastname: validateFirstName,
       description: validateTextArea,
       country: validateSelect,
       notificationType: validateCheckbox,
       notificationPush: validateRadio,
-
-      // ... altri campi da validare
     };
 
     const success = handleSubmit( e, form, fields, setErrors );
@@ -81,10 +75,17 @@ const Form = () => {
   return (
     <>
       <form className='container' onSubmit={ handleFormSubmit }>
-        <h3 className='text-center'>Form</h3>
-        <FormUiHeader title="Titolo form" subtitle="Sottotitolo form" />
+        <h3 className='text-center'>Componente Form</h3>
+        <FormUiHeader
+          classBox=""
+          title="Titolo"
+          classTitle=""
+          subtitle="Sottotitolo"
+          classSubtitle=""
+        />
 
         <div className='scb-form-grid'>
+
           <FormUiInput
             id="firstname"
             label="First Name"
@@ -109,6 +110,7 @@ const Form = () => {
           id="description"
           label="Description"
           rows={ 10 }
+          maxChars={ 1000 }
           placeholder="Inserisci una descrizione"
           value={ form.description }
           onChange={ ( e ) => setForm( { ...form, description: e.target.value } ) }
@@ -140,30 +142,27 @@ const Form = () => {
           error={ errors.notificationPush }
         />
 
-
-
         <FormUiDropFile
-          key={ fileKey } // Aggiungi la chiave per forzare il rimontaggio
           id="myfile"
           label="UploadFile"
-          multiple={ true }
+          multiple={ false }
           minFiles={ 0 }
-          validationFunction={ ( files ) => [minFileValidator( files, 1 )] }
-          maxFiles={ 3 }
+          maxFiles={ 1 }
           maxSize={ 1024 * 1024 }
           accept={ {
-            // "image/png": [],
-            // "image/svg+xml": []
-            "image/*": []
+            "application/pdf": []
           } }
-          info="Campo RICHIESTO: solo un file, png / svg del peso max di 1024kb"
+          // campoRichiesto="✅"
+          campoRichiesto="❌"
+          infoNumFiles="1"
+          infoTypeFiles="Documenti "
+          infoExtFiles=".pdf"
+          infoSizeFiles="> ad 1 MB"
           onAddFiles={ ( files ) => setForm( { ...form, files } ) }
         />
 
-
         {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }
         <div>
-
           <div className="scb-form-button">
             <FormResetButton
               onReset={ handleReset }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const FormUiTextArea = ( { id, label, rows, placeholder, value, onChange, error } ) => {
-  const [remainingChars, setRemainingChars] = useState( 1000 );
+const FormUiTextArea = ( { id, label, rows, placeholder, value, onChange, error, maxChars } ) => {
+  const [remainingChars, setRemainingChars] = useState( maxChars );
 
   const calculateColor = () => {
     const percentage = ( remainingChars / 1000 ) * 100;
@@ -15,14 +15,21 @@ const FormUiTextArea = ( { id, label, rows, placeholder, value, onChange, error 
     }
   };
 
+  const calculateRemainingChars = ( inputValue ) => {
+    const charsUsed = inputValue.length;
+    const newRemainingChars = maxChars - charsUsed;
+    setRemainingChars( newRemainingChars >= 0 ? newRemainingChars : 0 );
+  };
+
   const handleInputChange = ( e ) => {
     const inputValue = e.target.value;
-    const charsUsed = inputValue.length;
-    const newRemainingChars = 1000 - charsUsed;
 
-    if ( newRemainingChars >= 0 ) {
-      setRemainingChars( newRemainingChars );
-      onChange( e ); // Chiamata alla funzione di onChange per aggiornare il valore del textarea nel componente padre
+    if ( inputValue.length < value.length ) {
+      calculateRemainingChars( inputValue );
+      onChange( e );
+    } else if ( remainingChars > 0 ) {
+      calculateRemainingChars( inputValue );
+      onChange( e );
     }
   };
 
