@@ -10,4 +10,6 @@ export const resetForm = ( defaultValue, formUIGroupRadioValues, formUIGroupChec
   formUIGroupCheckboxValues.forEach( ( checkbox ) => {
     document.getElementById( checkbox.value ).checked = false;
   } );
+
+
 };

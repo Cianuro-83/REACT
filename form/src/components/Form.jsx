@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import FormUiHeader from './formUi/FormUiHeader';
 import FormUiInput from './formUi/FormUiInput';
 import FormUiTextArea from './formUi/FormUiTextArea';
 import FormUiSelect from './formUi/FormUiSelect';
 import FormUiGroupCheckbox from './formUi/formUiCheckbox/FormUiGroupCheckbox';
 import FormUiGroupRadio from './formUi/FormUiRadio/FormUiGroupRadio';
-import FormUiDropFile from './formUi/FormUiDropFile';
+import { FormUiDropFile } from './formUi/FormUiDropFile';
 import FormResetButton from './formUi/formUtility/FormResetButton';
 import FormSubmitButton from './formUi/formUtility/FormSubmitButton';
 import { selectValues, formUIGroupCheckboxValues, formUIGroupRadioValues } from './formUi/formUtility/formData';
@@ -14,6 +14,7 @@ import { validateFirstName, validateTextArea, validateSelect, validateCheckbox, 
 
 
 const Form = () => {
+  const formUiDropFileRef = useRef( null );
   const defaultValue = selectValues.find( item => item.default )?.value || 0;
   const [form, setForm] = useState( {
     firstname: '',
@@ -35,6 +36,8 @@ const Form = () => {
   } );
 
   const handleReset = () => {
+    formUiDropFileRef.current.resetDropFile();
+
     setForm( {
       firstname: '',
       lastname: '',
@@ -42,7 +45,9 @@ const Form = () => {
       country: defaultValue,
       notificationType: [],
       notificationPush: null,
+      files: null,
     } );
+
     setErrors( {
       firstname: null,
       lastname: null,
@@ -50,6 +55,7 @@ const Form = () => {
       country: null,
       notificationType: null,
       notificationPush: null,
+      files: null,
     } );
   };
 
@@ -159,6 +165,7 @@ const Form = () => {
           infoExtFiles=".pdf"
           infoSizeFiles="> ad 1 MB"
           onAddFiles={ ( files ) => setForm( { ...form, files } ) }
+          ref={ formUiDropFileRef }
         />
 
         {/* BLOCCO BOTTONE SVUOTA E SUBMIT */ }

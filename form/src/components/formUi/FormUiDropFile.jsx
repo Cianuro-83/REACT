@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 import { useDropzone } from 'react-dropzone';
 import upload from '../../assets/upload-file.svg';
 import infoIicon from '../../assets/info.svg';
 
-const FormUiDropFile = ( { onAddFiles, label, id, multiple, accept, maxSize, maxFiles, minFiles, campoRichiesto, infoNumFiles, infoTypeFiles, infoSizeFiles, infoExtFiles } ) => {
+const FormUiDropFile = forwardRef( ( { onAddFiles, label, id, multiple, accept, maxSize, maxFiles, minFiles, campoRichiesto, infoNumFiles, infoTypeFiles, infoSizeFiles, infoExtFiles, onReset }, ref ) => {
   const [droppedFiles, setDroppedFiles] = useState( [] );
+  const inputRef = useRef( null );
 
   const onDrop = useCallback( ( acceptedFiles ) => {
     setDroppedFiles(
@@ -14,7 +15,6 @@ const FormUiDropFile = ( { onAddFiles, label, id, multiple, accept, maxSize, max
         } )
       )
     );
-    // Passa i file al genitore tramite la callback
     onAddFiles( acceptedFiles );
   }, [onAddFiles] );
 
@@ -29,9 +29,20 @@ const FormUiDropFile = ( { onAddFiles, label, id, multiple, accept, maxSize, max
   } );
 
   useEffect( () => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () => droppedFiles.forEach( ( file ) => URL.revokeObjectURL( file.preview ) );
   }, [droppedFiles] );
+
+  const resetDropFile = () => {
+    setDroppedFiles( [] );
+    if ( inputRef.current ) {
+      inputRef.current.value = '';
+    }
+  };
+
+  // Passa la funzione resetDropFile attraverso la ref
+  useImperativeHandle( ref, () => ( {
+    resetDropFile,
+  } ) );
 
   return (
     <>
@@ -134,6 +145,6 @@ const FormUiDropFile = ( { onAddFiles, label, id, multiple, accept, maxSize, max
       </div>
     </>
   );
-};
+} );
 
-export default FormUiDropFile;
+export { FormUiDropFile };  
