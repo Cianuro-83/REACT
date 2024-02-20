@@ -20,28 +20,17 @@ const Contacts = () => {
   console.log( errors );
   const [formData, setFormData] = useState( { fotoprofilo: [] } );
   const [showModal, setShowModal] = useState( false );
+  const message = watch( 'messaggio', '' );
+  const trimmedLength = message.trim().length;
 
   const onSubmit = handleSubmit( ( data, event ) => {
-    console.log( data );
     setFormData( data );
 
     if ( Object.keys( errors ).length === 0 ) {
       setShowModal( true );
     }
 
-    // const ulElement = event.target.parentNode.querySelector( ' ul' );
-    // ulElement.innerHTML = '';
-    // const fileInput = event.target.parentNode.querySelector( 'input[type="file"]' );
-    // fileInput.value = '';
-    // reset();
-
   } );
-  // useEffect( () => {
-  //   setFormData( watch() );
-  // }, [watch] );
-  const message = watch( 'messaggio', '' );
-  const trimmedLength = message.trim().length;
-
   const handleFileChange = ( event ) => {
     const fileList = event.target.files;
     const fileNames = Array.from( fileList ).map( file => file.name );
@@ -52,6 +41,8 @@ const Contacts = () => {
     setShowModal( false );
     setFormData( {} );
   };
+
+
 
 
 
@@ -307,8 +298,8 @@ const Contacts = () => {
 
           {/* submit */ }
 
-          <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onSubmit={ handleSubmit }>
-            INVIA
+          <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onSubmit={ handleSubmit } className="text-uppercase btn btn-primary">
+            visualizza dati prima dell'invio
           </button>
 
           <FormModal formData={ formData } showModal={ showModal } handleModalClose={ handleModalClose } />

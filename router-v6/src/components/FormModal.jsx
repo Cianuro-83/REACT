@@ -1,6 +1,9 @@
 import React from 'react';
 
 const FormModal = ( { formData, showModal, handleModalClose } ) => {
+  const handleFormSend = ( formData ) => {
+    console.log( formData );
+  };
   return (
     showModal && Object.keys( formData ).length !== 0 && (
       <div className="modal fade" id="exampleModal" tabIndex={ -1 } aria-labelledby="inviaForm" aria-hidden="true">
@@ -39,7 +42,7 @@ const FormModal = ( { formData, showModal, handleModalClose } ) => {
               <button type="button" className="btn btn-secondary" onClick={ handleModalClose } data-bs-dismiss="modal">
                 Torna Indietro
               </button>
-              <button type="button" className="btn btn-primary">Invia</button>
+              <button type="button" className="btn btn-primary" onClick={ () => handleFormSend( formData ) }>Invia</button>
             </div>
           </div>
         </div>
