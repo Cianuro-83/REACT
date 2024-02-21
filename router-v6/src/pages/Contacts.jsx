@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { serviceValues } from '../servizi';
@@ -11,7 +11,6 @@ const Contacts = () => {
     formState: { errors },
     reset,
     watch,
-
   } = useForm( {
     defaultValues: {
       condizioniduso: true,
@@ -23,27 +22,30 @@ const Contacts = () => {
   const message = watch( 'messaggio', '' );
   const trimmedLength = message.trim().length;
 
-  const onSubmit = handleSubmit( ( data, event ) => {
-    setFormData( data );
-
-    if ( Object.keys( errors ).length === 0 ) {
-      setShowModal( true );
-    }
-
-  } );
   const handleFileChange = ( event ) => {
     const fileList = event.target.files;
     const fileNames = Array.from( fileList ).map( file => file.name );
     const ulElement = event.target.parentNode.querySelector( ' ul' );
     ulElement.innerHTML = fileNames.map( name => `<li class='file-list'>${name}</li>` ).join( '' );
   };
+
+  const onSubmit = handleSubmit( ( data ) => {
+    setFormData( data );
+
+    if ( Object.keys( errors ).length === 0 ) {
+      setShowModal( true );
+    }
+  } );
+
+  const formReset = () => {
+    reset();
+    const ulElement = document.querySelector( ' ul' );
+    ulElement.innerHTML = '';
+  };
   const handleModalClose = () => {
     setShowModal( false );
     setFormData( {} );
   };
-
-
-
 
 
   return (
@@ -297,18 +299,23 @@ const Contacts = () => {
 
 
           {/* submit */ }
-
-          <button type="submit" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onSubmit={ handleSubmit } className="text-uppercase btn btn-primary">
-            visualizza dati prima dell'invio
+          <button
+            type="submit"
+            id='submitButton'
+            className="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            onSubmit={ handleSubmit }
+            className="text-uppercase btn btn-primary"
+          >
+            DOPPIO CLICK PER PROCEDERE
           </button>
 
-          <FormModal formData={ formData } showModal={ showModal } handleModalClose={ handleModalClose } />
-
-
-
-
-
-          <pre>{ JSON.stringify( watch(), null, 2 ) }</pre>
+          <FormModal
+            formData={ formData }
+            showModal={ showModal }
+            formReset={ formReset }
+            handleModalClose={ handleModalClose } />
         </form>
       </div >
 
@@ -317,4 +324,3 @@ const Contacts = () => {
 };
 
 export default Contacts;
-

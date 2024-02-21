@@ -1,8 +1,7 @@
-import React from 'react';
-
-const FormModal = ( { formData, showModal, handleModalClose } ) => {
-  const handleFormSend = ( formData ) => {
+const FormModal = ( { formData, showModal, handleModalClose, formReset } ) => {
+  const handleFormSubmit = () => {
     console.log( formData );
+    formReset();
   };
   return (
     showModal && Object.keys( formData ).length !== 0 && (
@@ -40,9 +39,11 @@ const FormModal = ( { formData, showModal, handleModalClose } ) => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" onClick={ handleModalClose } data-bs-dismiss="modal">
-                Torna Indietro
+                Torna Indietro / Modifica Dati
               </button>
-              <button type="button" className="btn btn-primary" onClick={ () => handleFormSend( formData ) }>Invia</button>
+              <button type="button" className="btn btn-primary" onClick={ handleFormSubmit } data-bs-dismiss="modal">
+                Invia Dati
+              </button>
             </div>
           </div>
         </div>
