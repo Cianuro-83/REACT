@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import Table from '../components/Table';
 
 const About = () => {
   return (
@@ -20,8 +21,10 @@ const About = () => {
         <NavLink className={ ( { isActive } ) => isActive ? 'active-link' : 'null' } to="/about">About</NavLink>
         <NavLink className={ ( { isActive } ) => isActive ? 'active-link' : 'null' } to="/contacts">Contacts</NavLink>
 
-
       </div>
+      <hr />
+      <p>PAGINATION</p>
+      <Table />
 
     </div>
   );
