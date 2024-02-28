@@ -9,13 +9,17 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import './style/index.scss';
 // ROTTE
 import PrincipalRouter from './routers/PrincipalRouter';
-
+//RTK QUERY
+import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { messageApi } from './api/messageApi';
 
 
 ReactDOM.createRoot( document.getElementById( 'root' ) ).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <PrincipalRouter />
-    </BrowserRouter>
+    <ApiProvider api={ messageApi }>
+      <BrowserRouter>
+        <PrincipalRouter />
+      </BrowserRouter>
+    </ApiProvider>
   </React.StrictMode>,
 );

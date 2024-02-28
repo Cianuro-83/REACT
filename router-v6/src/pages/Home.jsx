@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import albums from '../data';
+import ProvaApi from '../components/ProvaApi';
 
 const Home = () => {
   return (
@@ -21,6 +22,11 @@ const Home = () => {
         <NavLink className={ ( { isActive } ) => isActive ? 'active-link' : 'null' } to="/about">About</NavLink>
         <NavLink className={ ( { isActive } ) => isActive ? 'active-link' : 'null' } to="/contacts">Contacts</NavLink>
 
+      </div>
+      <hr />
+      <div>
+        <h2>PROVA API</h2>
+        <ProvaApi />
       </div>
       <hr />
       <div>
