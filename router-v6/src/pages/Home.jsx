@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import albums from '../data';
 import ProvaApi from '../components/ProvaApi';
+import CrudPost from '../components/CrudPost';
+import CrudUpdate from '../components/CrudUpdate';
 
 const Home = () => {
   return (
@@ -27,6 +29,8 @@ const Home = () => {
       <div>
         <h2>PROVA API</h2>
         <ProvaApi />
+
+
       </div>
       <hr />
       <div>
