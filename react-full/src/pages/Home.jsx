@@ -1,10 +1,13 @@
 import Counter from '../components/Counter';
+import Todos from '../components/Todos';
 
 const Home = () => {
    return (
       <>
          <h1>Home</h1>
          <Counter />
+         <hr />
+         <Todos />
       </>
    );
 };
