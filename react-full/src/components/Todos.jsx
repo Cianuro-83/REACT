@@ -1,11 +1,12 @@
-import { useGetTodosQuery } from '../store/api/todosApi';
+import { useGetTodosQuery, useDeleteTodoMutation } from '../store/api/todosApi';
 const Todos = () => {
    const { data: todos = [], isError, error, isLoading } = useGetTodosQuery();
    console.log(todos);
 
+   const [deleteTodo] = useDeleteTodoMutation();
+
    return (
       <>
-         <h1>TODOS RTK-QUERY</h1>
          {isLoading && <p>Loading...</p>}
          {isError && <p>{error.message}</p>}
 
@@ -15,6 +16,12 @@ const Todos = () => {
                   <li key={todo.id}>
                      <strong>{todo.completed ? 'DONE ' : 'PENDING '}</strong>
                      {todo.title}
+                     <button
+                        className="btn btn-danger m-2"
+                        onClick={() => deleteTodo(todo.id)}
+                     >
+                        Cancella
+                     </button>
                   </li>
                ))}
          </ul>

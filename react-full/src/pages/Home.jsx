@@ -1,4 +1,5 @@
 import Counter from '../components/Counter';
+import TodForm from '../components/TodForm';
 import Todos from '../components/Todos';
 
 const Home = () => {
@@ -6,6 +7,8 @@ const Home = () => {
       <>
          <h1>Home</h1>
          <Counter />
+         <hr />
+         <TodForm />
          <hr />
          <Todos />
       </>

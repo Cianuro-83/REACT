@@ -74,5 +74,20 @@ h6 {
 }
 // *****************************************
 // STILE DEL COMPONENTE
-// nome del componente
+// Form
 // *****************************************
+.form-error {
+   color: red;
+   font-weight: bold;
+   font-size: 0.8rem;
+   display: block;
+}
+.input-error {
+   border: 2px solid red;
+}
+.file-list {
+   display: inline-block;
+   background-color: rgb(218, 211, 211);
+   padding: 10px;
+   margin: 5px;
+}

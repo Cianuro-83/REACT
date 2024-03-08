@@ -1,0 +1,114 @@
+import { useForm } from 'react-hook-form';
+import { useAddNewTodoMutation } from '../store/api/todosApi';
+const TodForm = () => {
+   const [createPost] = useAddNewTodoMutation();
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+      reset,
+      watch,
+      setValue,
+   } = useForm();
+   const onSubmit = handleSubmit((data) => {
+      console.log(data);
+      createPost(data);
+      reset();
+   });
+   return (
+      <>
+         <h1>TodForm</h1>
+         <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+               {/* userId */}
+               <label htmlFor="userId">UserId</label>
+               <input
+                  type="number"
+                  className={errors.userId && 'input-error'}
+                  {...register('userId', {
+                     required: {
+                        value: true,
+                        message: 'messaggio di errore',
+                     },
+                  })}
+               />
+               {errors.userId && (
+                  <p className="form-error">{errors.userId.message}</p>
+               )}
+            </div>
+
+            <div>
+               {/* id */}
+               <label htmlFor="id">id</label>
+               <input
+                  type="number"
+                  className={errors.id && 'input-error'}
+                  {...register('id', {
+                     required: {
+                        value: true,
+                        message: 'messaggio di errore',
+                     },
+                  })}
+               />
+               {errors.id && <p className="form-error">{errors.id.message}</p>}
+            </div>
+            <div>
+               {/* title */}
+               <label htmlFor="title">Testo del Todo</label>
+               <input
+                  type="text"
+                  className={errors.title && 'input-error'}
+                  {...register('title', {
+                     required: {
+                        value: true,
+                        message: 'messaggio di errore',
+                     },
+                     pattern: {
+                        value: {
+                           /* REGEX DI VALIDAZIONE */
+                        },
+                        message: 'messaggio di errore',
+                     },
+                     validate: (value) => {
+                        if (value.trim().length < 3) {
+                           return 'messaggio di errore';
+                        } else if (value.trim().length > 50) {
+                           return 'messaggio di errore';
+                        }
+                        return true;
+                     },
+                  })}
+               />
+               {errors.title && (
+                  <p className="form-error">{errors.title.message}</p>
+               )}
+            </div>
+            <div>
+               {/* completed */}
+               <label>
+                  <input
+                     type="checkbox"
+                     className={errors.completed && 'input-error'}
+                     {...register('completed', {
+                        required: {
+                           value: true,
+                           message: 'messaggio di errore',
+                        },
+                     })}
+                  />
+                  Task completato
+               </label>
+               {errors.completed && (
+                  <p className="form-error">{errors.completed.message}</p>
+               )}
+            </div>
+            <div>
+               {/* buttone */}
+               <button type="submit">INVIA</button>
+            </div>
+         </form>
+      </>
+   );
+};
+
+export default TodForm;

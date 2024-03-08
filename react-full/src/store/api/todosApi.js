@@ -4,17 +4,45 @@ export const todosApi = createApi({
    baseQuery: fetchBaseQuery({
       baseUrl: 'http://localhost:3000',
    }),
-   providerTags: [''],
+   tagTypes: ['Todo'],
    endpoints: (builder) => ({
       getTodos: builder.query({
          query: () => '/todos',
-         providerTags: [''],
+         providesTags: ['Todo'],
+         transformResponse: (response) => {
+            return response.sort((a, b) => b.id - a.id);
+         },
       }),
       getTodo: builder.query({
          query: (todoId) => `/todos/${todoId}`,
-         providerTags: [''],
+         providesTags: ['Todo'],
+      }),
+      addNewTodo: builder.mutation({
+         query: (newTodo) => ({
+            url: '/todos',
+            method: 'POST',
+            body: newTodo,
+         }),
+         invalidatesTags: ['Todo'],
+      }),
+      deleteTodo: builder.mutation({
+         query: (id) => ({
+            url: `/todos/${id}`,
+            method: 'DELETE',
+         }),
+         invalidatesTags: ['Todo'],
       }),
    }),
 });
 
-export const { useGetTodosQuery, useGetTodoQuery } = todosApi;
+export const {
+   useGetTodosQuery,
+   useGetTodoQuery,
+   useAddNewTodoMutation,
+   useDeleteTodoMutation,
+} = todosApi;
+
+// *****************************************
+// STILE DEL COMPONENTE
+// nome del componente
+// ****************************************
