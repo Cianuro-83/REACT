@@ -1,81 +1,24 @@
+//**************************************************
+//? *** ***IMPORT RESET & NORMALIZE RULES*** *** ***
+@import './reset&normalize.scss';
+//? *** ***IMPORT VARIABILI PERSONALIZZATE*** ***
 @import './variables.scss';
-// *****************************************
-// RESET RULES
-// *****************************************
-body,
-html {
-   line-height: 1;
-   font-size: 16px;
-   margin: 0;
-   padding: 0;
-   font-family: 'Roboto Mono', monospace;
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  DARK MODE
+************************************************* */
+.dark-mode {
+   background-color: $dark-bg;
+   color: $dark-color;
 }
-*,
-*:before,
-*:after {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
+.light-mode {
+   background-color: $light-bg;
+   color: $light-color;
 }
-
-a {
-   text-decoration: none;
-   color: inherit;
-   transition: color 0.3s ease;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ol,
-ul {
-   margin: 0 0 1rem 0;
-   padding: 0;
-}
-
-img {
-   max-width: 100%;
-   height: auto;
-   display: block;
-}
-
-ul,
-ol {
-   margin: 0;
-   padding: 0;
-   list-style: none;
-}
-
-h1 {
-   font-size: 4rem;
-}
-h2 {
-   font-size: 3rem;
-}
-h3 {
-   font-size: 2rem;
-}
-h4 {
-   font-size: 1rem;
-}
-h5 {
-   font-size: 0.8rem;
-}
-h6 {
-   font-size: 0.6rem;
-}
-.active-link {
-   border-bottom: 5px solid greenyellow;
-   margin: 5px;
-}
-// *****************************************
-// STILE DEL COMPONENTE
-// Form
-// *****************************************
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  FORM
+************************************************* */
 .form-error {
    color: red;
    font-weight: bold;
