@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react'; // Aggiungi questa importazione
+import { useEffect } from 'react';
 import { toggleDarkMode } from '../store/slices/darkMode';
 
 const DarkMode = () => {
@@ -19,11 +19,15 @@ const DarkMode = () => {
    };
 
    return (
-      <>
+      <div className="rfc-dark-mode">
          <button onClick={handleDarkMode}>
-            {isDarkMode ? 'Disattiva Dark Mode' : 'Attiva Dark Mode'}
+            {isDarkMode ? (
+               <img src="img/lightMode.svg" alt="Light Mode" />
+            ) : (
+               <img src="img/darkMode.svg" alt="Dark Mode" />
+            )}
          </button>
-      </>
+      </div>
    );
 };
 

@@ -15,6 +15,15 @@ todo:  DARK MODE
    background-color: $light-bg;
    color: $light-color;
 }
+.rfc-dark-mode {
+   img {
+      height: 25px;
+   }
+   button {
+      background-color: transparent;
+      border: none;
+   }
+}
 /* *************************************************
 ? ************** STILE DEL COMPONENTE***************
 todo:  FORM
