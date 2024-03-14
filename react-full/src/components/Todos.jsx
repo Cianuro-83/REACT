@@ -1,4 +1,7 @@
 import { useGetTodosQuery, useDeleteTodoMutation } from '../store/api/todosApi';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+
 const Todos = () => {
    const { data: todos = [], isError, error, isLoading } = useGetTodosQuery();
    console.log(todos);
@@ -20,7 +23,10 @@ const Todos = () => {
                         className="btn btn-danger m-2"
                         onClick={() => deleteTodo(todo.id)}
                      >
-                        Cancella
+                        <FontAwesomeIcon icon={faTrash} />
+                     </button>
+                     <button className="btn btn-warning m-2">
+                        <FontAwesomeIcon icon={faPenToSquare} />
                      </button>
                   </li>
                ))}
