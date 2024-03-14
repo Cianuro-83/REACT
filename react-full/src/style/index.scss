@@ -43,3 +43,35 @@ todo:  FORM
    padding: 10px;
    margin: 5px;
 }
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  Todos.jsx
+************************************************* */
+.rfc-todos {
+   h1 {
+      text-align: center;
+   }
+   .add-button {
+      text-align: center;
+      button {
+         font-weight: bolder;
+      }
+   }
+}
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  TodForm.jsx
+************************************************* */
+.rfc-TodForm {
+   h1 {
+      text-align: center;
+   }
+   input {
+      width: 100%;
+      margin-bottom: 10px;
+   }
+   button {
+      font-weight: bolder;
+      margin-top: 10px;
+   }
+}

@@ -1,6 +1,7 @@
 import { useGetTodosQuery, useDeleteTodoMutation } from '../store/api/todosApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const Todos = () => {
    const { data: todos = [], isError, error, isLoading } = useGetTodosQuery();
@@ -9,11 +10,17 @@ const Todos = () => {
    const [deleteTodo] = useDeleteTodoMutation();
 
    return (
-      <>
+      <div className="rfc-todos container">
+         <h1>LISTA DEI TODO ({todos.length})</h1>
+         <div className="add-button">
+            <Link to="/create-todo">
+               <button className="btn btn-success">ADD TODO</button>
+            </Link>
+         </div>
          {isLoading && <p>Loading...</p>}
          {isError && <p>{error.message}</p>}
 
-         <ul className="ms-5">
+         <ul className="">
             {todos &&
                todos.map((todo) => (
                   <li key={todo.id}>
@@ -25,13 +32,15 @@ const Todos = () => {
                      >
                         <FontAwesomeIcon icon={faTrash} />
                      </button>
-                     <button className="btn btn-warning m-2">
-                        <FontAwesomeIcon icon={faPenToSquare} />
-                     </button>
+                     <Link to={`/edit-todo/${todo.id}`}>
+                        <button className="btn btn-warning m-2">
+                           <FontAwesomeIcon icon={faPenToSquare} />
+                        </button>
+                     </Link>
                   </li>
                ))}
          </ul>
-      </>
+      </div>
    );
 };
 

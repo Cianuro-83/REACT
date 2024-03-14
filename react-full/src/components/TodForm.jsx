@@ -1,23 +1,26 @@
 import { useForm } from 'react-hook-form';
 import { useAddNewTodoMutation } from '../store/api/todosApi';
+import { useNavigate } from 'react-router';
 const TodForm = () => {
+   const navigate = useNavigate();
    const [createPost] = useAddNewTodoMutation();
    const {
       register,
       handleSubmit,
       formState: { errors },
       reset,
-      watch,
-      setValue,
+      // watch,
+      // setValue,
    } = useForm();
    const onSubmit = handleSubmit((data) => {
       console.log(data);
       createPost(data);
       reset();
+      navigate('/');
    });
    return (
-      <>
-         <h1>TodForm</h1>
+      <div className="rfc-TodForm container">
+         <h1>GESTIONE TODO</h1>
          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                {/* userId */}
@@ -91,7 +94,7 @@ const TodForm = () => {
                      className={errors.completed && 'input-error'}
                      {...register('completed', {
                         required: {
-                           value: true,
+                           value: false,
                            message: 'messaggio di errore',
                         },
                      })}
@@ -107,7 +110,7 @@ const TodForm = () => {
                <button type="submit">INVIA</button>
             </div>
          </form>
-      </>
+      </div>
    );
 };
 
