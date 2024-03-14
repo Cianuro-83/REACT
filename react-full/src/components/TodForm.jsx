@@ -1,10 +1,22 @@
 import { useForm } from 'react-hook-form';
-import { useAddNewTodoMutation } from '../store/api/todosApi';
-import { useNavigate } from 'react-router';
+import { useAddNewTodoMutation, useGetTodosQuery } from '../store/api/todosApi';
+import { useNavigate, useParams } from 'react-router';
 import DarkMode from './DarkMode';
+import { useEffect } from 'react';
 const TodForm = () => {
    const navigate = useNavigate();
-   const [createPost] = useAddNewTodoMutation();
+   const params = useParams();
+   const { data: todos } = useGetTodosQuery();
+   console.log(params);
+   useEffect(() => {
+      if (params.id && todos) {
+         const exist = todos.find((todo) => todo.id === params.id);
+         if (!exist) {
+            navigate('/*');
+         }
+      }
+   }, [params, todos]);
+   const [createTodo] = useAddNewTodoMutation();
    const {
       register,
       handleSubmit,
@@ -15,7 +27,7 @@ const TodForm = () => {
    } = useForm();
    const onSubmit = handleSubmit((data) => {
       console.log(data);
-      createPost(data);
+      createTodo(data);
       reset();
       navigate('/');
    });
