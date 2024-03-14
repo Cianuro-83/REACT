@@ -2,15 +2,17 @@ import { useForm } from 'react-hook-form';
 import { useAddNewTodoMutation, useGetTodosQuery } from '../store/api/todosApi';
 import { useNavigate, useParams } from 'react-router';
 import DarkMode from './DarkMode';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 const TodForm = () => {
    const navigate = useNavigate();
    const params = useParams();
    const { data: todos } = useGetTodosQuery();
+   const [old, setOld] = useState([]);
    console.log(params);
    useEffect(() => {
       if (params.id && todos) {
          const exist = todos.find((todo) => todo.id === params.id);
+         setOld(exist);
          if (!exist) {
             navigate('/*');
          }
@@ -41,6 +43,7 @@ const TodForm = () => {
                <label htmlFor="userId">UserId</label>
                <input
                   type="number"
+                  value={old?.userId || ''}
                   className={errors.userId && 'input-error'}
                   {...register('userId', {
                      required: {
@@ -59,6 +62,7 @@ const TodForm = () => {
                <label htmlFor="id">id</label>
                <input
                   type="number"
+                  value={old?.id || ''}
                   className={errors.id && 'input-error'}
                   {...register('id', {
                      required: {
@@ -74,6 +78,7 @@ const TodForm = () => {
                <label htmlFor="title">Testo del Todo</label>
                <input
                   type="text"
+                  value={old?.title || ''}
                   className={errors.title && 'input-error'}
                   {...register('title', {
                      required: {
@@ -105,6 +110,7 @@ const TodForm = () => {
                <label>
                   <input
                      type="checkbox"
+                     checked={old?.completed || false}
                      className={errors.completed && 'input-error'}
                      {...register('completed', {
                         required: {
