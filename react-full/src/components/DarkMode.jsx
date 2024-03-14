@@ -22,9 +22,9 @@ const DarkMode = () => {
       <div className="rfc-dark-mode">
          <button onClick={handleDarkMode}>
             {isDarkMode ? (
-               <img src="img/lightMode.svg" alt="Light Mode" />
+               <img src="/img/lightMode.svg" alt="Light Mode" />
             ) : (
-               <img src="img/darkMode.svg" alt="Dark Mode" />
+               <img src="/img/darkMode.svg" alt="Dark Mode" />
             )}
          </button>
       </div>
