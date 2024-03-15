@@ -1,7 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useAddNewTodoMutation, useGetTodosQuery } from '../store/api/todosApi';
 import { useNavigate, useParams } from 'react-router';
-import DarkMode from './DarkMode';
 import { useEffect, useState } from 'react';
 const TodForm = () => {
    const navigate = useNavigate();
@@ -35,7 +34,6 @@ const TodForm = () => {
    });
    return (
       <div className="rfc-TodForm container">
-         <DarkMode />
          <h1>GESTIONE TODO</h1>
          <form onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -126,7 +124,7 @@ const TodForm = () => {
                )}
             </div>
             <div>
-               {/* buttone */}
+               {/* button */}
                <button type="submit">INVIA</button>
             </div>
          </form>

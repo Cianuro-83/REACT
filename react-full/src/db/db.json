@@ -13,22 +13,10 @@
       "completed": false
     },
     {
-      "id": "3",
-      "userId": "3",
-      "title": "SCB",
-      "completed": false
-    },
-    {
       "id": "4",
       "userId": "4",
       "title": "GESTIONE TODO",
       "completed": false
-    },
-    {
-      "id": "5",
-      "userId": "5",
-      "title": "CIAO",
-      "completed": true
     }
   ]
 }
