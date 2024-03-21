@@ -2,12 +2,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '../components/Layout';
 import ErrorPage from '../pages/ErrorPages';
 import { lazy } from 'react';
+import TodForm from '../components/todo/TodForm';
 
 // LAZY LOADING ROUTES
 const HomePage = lazy(() => import('../pages/Home'));
-const CreateTodo = lazy(() => import('../components/TodForm'));
 const NotFoundPage = lazy(() => import('../pages/NotFound'));
-const EditTodo = lazy(() => import('../components/TodForm'));
 
 const router = createBrowserRouter([
    {
@@ -21,11 +20,11 @@ const router = createBrowserRouter([
          },
          {
             path: '/create-todo',
-            element: <CreateTodo />,
+            element: <TodForm />,
          },
          {
             path: '/edit-todo/:id',
-            element: <EditTodo />,
+            element: <TodForm />,
          },
          {
             path: '*',

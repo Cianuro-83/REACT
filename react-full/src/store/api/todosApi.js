@@ -33,10 +33,10 @@ export const todosApi = createApi({
          invalidatesTags: ['Todo'],
       }),
       updateTodo: builder.mutation({
-         query: ({ id, todo }) => ({
-            url: `/todos/${id}`,
-            method: 'PATCH',
-            body: todo,
+         query: (updateTodo) => ({
+            url: `/todos/${updateTodo.id}`,
+            method: 'PUT',
+            body: updateTodo,
          }),
          invalidatesTags: ['Todo'],
       }),

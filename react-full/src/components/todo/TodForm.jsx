@@ -1,37 +1,55 @@
 import { useForm } from 'react-hook-form';
-import { useAddNewTodoMutation, useGetTodosQuery } from '../store/api/todosApi';
+import {
+   useAddNewTodoMutation,
+   useGetTodosQuery,
+   useUpdateTodoMutation,
+} from '../../store/api/todosApi';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
+
 const TodForm = () => {
    const navigate = useNavigate();
    const params = useParams();
-   const { data: todos } = useGetTodosQuery();
-   const [old, setOld] = useState([]);
+   const { data: todos, isLoading } = useGetTodosQuery();
+   const [old, setOld] = useState(null);
    console.log(params);
+
    useEffect(() => {
-      if (params.id && todos) {
+      if (params.id && todos && !isLoading) {
          const exist = todos.find((todo) => todo.id === params.id);
          setOld(exist);
          if (!exist) {
             navigate('/*');
          }
       }
-   }, [params, todos]);
+   }, [params, todos, isLoading]);
+
    const [createTodo] = useAddNewTodoMutation();
+   const [editTodo] = useUpdateTodoMutation();
    const {
       register,
       handleSubmit,
       formState: { errors },
       reset,
-      // watch,
-      // setValue,
    } = useForm();
+
    const onSubmit = handleSubmit((data) => {
       console.log(data);
-      createTodo(data);
+      if (params.id && todos && !isLoading) {
+         editTodo(data);
+      } else {
+         createTodo(data);
+      }
       reset();
+
       navigate('/');
    });
+
+   if (params.id) {
+      if (isLoading || !old) {
+         return <div>Loading...</div>;
+      }
+   }
    return (
       <div className="rfc-TodForm container">
          <h1>GESTIONE TODO</h1>
@@ -41,7 +59,7 @@ const TodForm = () => {
                <label htmlFor="userId">UserId</label>
                <input
                   type="number"
-                  value={old?.userId || ''}
+                  defaultValue={old?.userId || ''}
                   className={errors.userId && 'input-error'}
                   {...register('userId', {
                      required: {
@@ -60,7 +78,7 @@ const TodForm = () => {
                <label htmlFor="id">id</label>
                <input
                   type="number"
-                  value={old?.id || ''}
+                  defaultValue={old?.id || ''}
                   className={errors.id && 'input-error'}
                   {...register('id', {
                      required: {
@@ -76,7 +94,7 @@ const TodForm = () => {
                <label htmlFor="title">Testo del Todo</label>
                <input
                   type="text"
-                  value={old?.title || ''}
+                  defaultValue={old?.title || ''}
                   className={errors.title && 'input-error'}
                   {...register('title', {
                      required: {
@@ -108,7 +126,7 @@ const TodForm = () => {
                <label>
                   <input
                      type="checkbox"
-                     checked={old?.completed || false}
+                     defaultChecked={old?.completed || false}
                      className={errors.completed && 'input-error'}
                      {...register('completed', {
                         required: {

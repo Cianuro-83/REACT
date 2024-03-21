@@ -1,4 +1,7 @@
-import { useGetTodosQuery, useDeleteTodoMutation } from '../store/api/todosApi';
+import {
+   useGetTodosQuery,
+   useDeleteTodoMutation,
+} from '../../store/api/todosApi';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';

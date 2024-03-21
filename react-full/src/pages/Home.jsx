@@ -1,5 +1,5 @@
 import Counter from '../components/Counter';
-import Todos from '../components/Todos';
+import Todos from '../components/todo/Todos';
 
 const Home = () => {
    return (
