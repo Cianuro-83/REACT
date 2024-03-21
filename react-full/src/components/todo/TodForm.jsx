@@ -12,7 +12,6 @@ const TodForm = () => {
    const params = useParams();
    const { data: todos, isLoading } = useGetTodosQuery();
    const [old, setOld] = useState(null);
-   console.log(params);
 
    useEffect(() => {
       if (params.id && todos && !isLoading) {
