@@ -22,7 +22,7 @@ const Todos = () => {
 
    return (
       <div className="rfc-todos container">
-         <h2>
+         <h2 className="text-center">
             LISTA DEI TODO DA FARE (
             {todos.filter((todo) => !todo.completed).length})
          </h2>
@@ -50,23 +50,24 @@ const Todos = () => {
                               {todo.completed ? 'DONE ' : 'PENDING '}
                            </strong>
                            {todo.title}
+
+                           <Link to={`/edit-todo/${todo.id}`}>
+                              <button className="btn btn-warning m-2">
+                                 <FontAwesomeIcon icon={faPenToSquare} />
+                              </button>
+                           </Link>
                            <button
                               className="btn btn-danger m-2"
                               onClick={() => deleteTodo(todo.id)}
                            >
                               <FontAwesomeIcon icon={faTrash} />
                            </button>
-                           <Link to={`/edit-todo/${todo.id}`}>
-                              <button className="btn btn-warning m-2">
-                                 <FontAwesomeIcon icon={faPenToSquare} />
-                              </button>
-                           </Link>
                         </li>
                      )
                )}
          </ul>
 
-         <h2>
+         <h2 className="text-center">
             LISTA DEI TODO COMPLETATI (
             {todos.filter((todo) => todo.completed).length})
          </h2>
@@ -88,17 +89,17 @@ const Todos = () => {
                               {todo.completed ? 'DONE ' : 'PENDING '}
                            </strong>
                            {todo.title}
+                           <Link to={`/edit-todo/${todo.id}`}>
+                              <button className="btn btn-warning m-2">
+                                 <FontAwesomeIcon icon={faPenToSquare} />
+                              </button>
+                           </Link>
                            <button
                               className="btn btn-danger m-2"
                               onClick={() => deleteTodo(todo.id)}
                            >
                               <FontAwesomeIcon icon={faTrash} />
                            </button>
-                           <Link to={`/edit-todo/${todo.id}`}>
-                              <button className="btn btn-warning m-2">
-                                 <FontAwesomeIcon icon={faPenToSquare} />
-                              </button>
-                           </Link>
                         </li>
                      )
                )}

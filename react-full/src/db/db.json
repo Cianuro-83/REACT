@@ -7,15 +7,9 @@
       "completed": false
     },
     {
-      "userId": 1,
-      "id": "2",
-      "title": "quis ut nam facilis et officia qui",
-      "completed": false
-    },
-    {
-      "userId": "3",
       "id": "3",
-      "title": "ciao",
+      "userId": "3",
+      "title": "poi",
       "completed": true
     }
   ]
