@@ -7,8 +7,10 @@ const CommentPage = () => {
          <h1>CommentPage & Tanstack Table</h1>
 
          {/* prova lista */}
-         <p>{isError && <p>{error.message}</p>}</p>
-         <p>{isLoading && <p>Loading...</p>}</p>
+         <hr />
+         <h3>PROVA IN VISUALIZZAZIONE LISTA</h3>
+         <p>{isError && <span>{error.message}</span>}</p>
+         <p>{isLoading && <span>Loading...</span>}</p>
          <ul>
             {comments &&
                comments.map((comment) => (
