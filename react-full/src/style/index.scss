@@ -75,3 +75,29 @@ todo:  TodForm.jsx
       margin-top: 10px;
    }
 }
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  HEADER
+************************************************* */
+.rfc-Header {
+   ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+   }
+   .dark-selector {
+      margin-left: auto;
+   }
+}
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  CommentPage.jsx
+************************************************* */
+.rfc-CommentPage {
+   h1 {
+      text-align: center;
+   }
+}
