@@ -101,3 +101,29 @@ todo:  CommentPage.jsx
       text-align: center;
    }
 }
+/* *************************************************
+? ************** STILE DEL COMPONENTE***************
+todo:  TABELLA
+************************************************* */
+.rfc-SimpleTable {
+   table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      text-align: center;
+      border: 1px solid red;
+   }
+   thead,
+   tfoot {
+      background-color: black;
+      color: whitesmoke;
+   }
+   th,
+   td {
+      text-align: left;
+      padding: 1rem;
+   }
+   tbody tr:nth-child(even) {
+      background-color: #979797;
+   }
+}

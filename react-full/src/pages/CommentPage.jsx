@@ -1,3 +1,4 @@
+import SimpleTable from '../components/tabelle/SimpleTable';
 import { useGetCommentsQuery } from '../store/api/commentsApi';
 
 const CommentPage = () => {
@@ -5,7 +6,7 @@ const CommentPage = () => {
    return (
       <div className="rfc-CommentPage container">
          <h1>CommentPage & Tanstack Table</h1>
-
+         <SimpleTable />
          {/* prova lista */}
          <hr />
          <h3>PROVA IN VISUALIZZAZIONE LISTA</h3>
