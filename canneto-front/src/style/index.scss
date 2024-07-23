@@ -1,2 +1,153 @@
 @import './reset&normalize.scss';
 @import './variables.scss';
+
+/* *************************************************
+? ***************STILE DEL COMPONENTE***************
+todo:  DARK MODE
+************************************************* */
+.dark-mode {
+	background-color: $dark-bg;
+	color: $dark-color;
+	.modal-header,
+	.modal-body,
+	.modal-footer {
+		background-color: $dark-bg;
+		color: $dark-color;
+	}
+}
+
+.light-mode {
+	background-color: $light-bg;
+	color: $light-color;
+	.modal-header,
+	.modal-body,
+	.modal-footer {
+		background-color: $light-bg;
+		color: $light-color;
+	}
+}
+
+.rfc-dark-mode {
+	img {
+		height: 25px;
+	}
+	button {
+		background-color: transparent;
+		border: none;
+	}
+}
+
+/* *************************************************
+? ***************STILE DELLA PAGINA HOME***************
+todo:  Home.jsx
+************************************************* */
+.rfc-Home {
+	overflow: hidden;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+}
+
+.bande h2 {
+	color: white; /* Testo bianco */
+	margin: 0; /* Rimuovere margini per evitare overflow */
+	font-size: 2rem; /* Dimensione del testo di base */
+}
+
+.bande {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+	text-align: center;
+	max-height: 5vh; /* Altezza massima fissa a 5vh */
+	flex-shrink: 0;
+}
+
+.img-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
+}
+
+.sfondo {
+	height: 100%;
+	width: 100%;
+	object-fit: contain;
+	object-position: center;
+}
+
+/* Altezza delle bande responsive e dimensione del testo */
+@media (min-width: 1200px) {
+	.bande h2 {
+		font-size: 2.5rem;
+	}
+	.img-container {
+		height: 90vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
+	}
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+	.bande h2 {
+		font-size: 2rem;
+	}
+	.img-container {
+		height: 90.4vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
+	}
+}
+
+@media (max-width: 767px) and (min-width: 480px) {
+	.bande h2 {
+		font-size: 1.5rem;
+	}
+	.img-container {
+		height: 91.6vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
+	}
+}
+
+@media (max-width: 479px) {
+	.bande h2 {
+		font-size: 1.2rem;
+	}
+	.img-container {
+		height: 92.2vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
+	}
+}
+
+/* Media queries per rendere il testo responsive */
+@media (max-width: 1200px) {
+	.bande h2 {
+		font-size: 2rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.bande h2 {
+		font-size: 1.5rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.bande h2 {
+		font-size: 1.2rem;
+	}
+}

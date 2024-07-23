@@ -1,19 +1,46 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import NotFound from '../pages/NotFound';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomeLayout from '../components/layout/HomeLayout';
+import MainLayout from '../components/layout/MainLayout';
+import ErrorPage from '../pages/ErrorPages';
+import { lazy, Suspense } from 'react';
 
-const PrincipalRouter = () => {
+// LAZY LOADING ROUTES
+const Home = lazy(() => import('../pages/Home'));
+const NotFoundPage = lazy(() => import('../pages/NotFound'));
+
+// ROUTER
+const router = createBrowserRouter([
+	{
+		path: '/',
+		element: <HomeLayout />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				index: true,
+				element: <Home />,
+			},
+		],
+	},
+	{
+		path: '/app',
+		element: <MainLayout />,
+		errorElement: <ErrorPage />,
+		children: [
+			// Altre rotte per MainLayout
+			{
+				path: '*',
+				element: <NotFoundPage />,
+			},
+		],
+	},
+]);
+
+const AppRouter = () => {
 	return (
-		<div>
-			<Routes>
-				<Route path="/" element={<Home />} />
-				{/* INSERISCI ALTRE */}
-
-				{/* rotta errore 404 DEVE SEMPRE essere l'ultima */}
-				<Route path="*" element={<NotFound />} />
-			</Routes>
-		</div>
+		<Suspense fallback={<div>Loading...</div>}>
+			<RouterProvider router={router} />
+		</Suspense>
 	);
 };
 
-export default PrincipalRouter;
+export default AppRouter;
