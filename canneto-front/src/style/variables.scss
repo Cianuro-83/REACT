@@ -1,8 +1,19 @@
 /* *************************************************
-? ************ VARIABILI PERSONALIZZATE*************
+? ************ VARIABILI COLORE PERSONALIZZATE*************
 todo:  nomeVariabile: valore;
 ************************************************* */
 $dark-bg: rgb(42, 42, 185);
 $light-bg: #f5f5f5;
 $dark-color: #f5f5f5;
 $light-color: #202020;
+
+/* *************************************************
+? ************ VARIABILI OFFSET BOTTONI HOMEPAGE*************
+todo:  nomeVariabile: valore;
+************************************************* */
+
+// Variables for vertical offset of buttons
+$offset-lg: 80%;
+$offset-md: 80%;
+$offset-sm: 80%;
+$offset-xs: 80%;
