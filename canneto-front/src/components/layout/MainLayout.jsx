@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import DarkMode from '../DarkMode';
 import { useSelector } from 'react-redux';
+import NavBar from '../NavBar';
 
 const MainLayout = () => {
 	const isDarkMode = useSelector((state) => state.darkMode.darkMode);
@@ -8,8 +8,7 @@ const MainLayout = () => {
 	return (
 		<div className={`layout ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
 			<header className="header">
-				Header
-				<DarkMode />
+				<NavBar />
 			</header>
 			<main className="main">
 				<aside className="sidebar">Sidebar</aside>
