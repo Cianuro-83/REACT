@@ -305,3 +305,13 @@ todo:  MainLayout.jsx
 .logo {
 	width: 50px;
 }
+
+/* *************** Styles for buttons in mobile version *************** */
+@media (max-width: 768px) {
+	.rfc-NavBar {
+		li {
+			margin-bottom: 10px;
+			width: 100px;
+		}
+	}
+}

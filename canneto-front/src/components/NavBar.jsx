@@ -20,7 +20,7 @@ const NavBar = () => {
 						className="collapse navbar-collapse"
 						id="navbarSupportedContent">
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-center">
-							<li className="nav-item me-3">
+							<li className="nav-item me-3 mb-md-3 ">
 								<button
 									type="button"
 									className="btn btn-primary nav-button">
@@ -32,7 +32,7 @@ const NavBar = () => {
 									</a>
 								</button>
 							</li>
-							<li className="nav-item dropdown me-3">
+							<li className="nav-item dropdown me-3 mb-md-3">
 								<button
 									type="button"
 									className="btn btn-primary nav-button">
@@ -74,7 +74,7 @@ const NavBar = () => {
 									</ul>
 								</button>
 							</li>
-							<li className="nav-item dropdown me-3">
+							<li className="nav-item dropdown me-3 mb-md-3">
 								<button
 									type="button"
 									className="btn btn-primary nav-button">
@@ -111,7 +111,7 @@ const NavBar = () => {
 									</ul>
 								</button>
 							</li>
-							<li className="nav-item me-3">
+							<li className="nav-item me-3 mb-md-3">
 								<button
 									type="button"
 									className="btn btn-primary nav-button fs-5">
@@ -120,7 +120,7 @@ const NavBar = () => {
 									</a>
 								</button>
 							</li>
-							<li className="nav-item me-3">
+							<li className="nav-item me-3 mb-md-3">
 								<button
 									type="button"
 									className="btn btn-primary nav-button fs-5">
