@@ -6,12 +6,45 @@
 todo:  DARK MODE
 ************************************************* */
 .dark-mode {
-	background-color: $dark-bg;
+	background: rgb(2, 0, 36);
+	background: radial-gradient(
+		circle,
+		rgba(2, 0, 36, 1) 0%,
+		rgba(9, 9, 121, 1) 35%,
+		rgba(0, 212, 255, 1) 100%
+	);
 	color: $dark-color;
-	.modal-header,
-	.modal-body,
-	.modal-footer {
-		background-color: $dark-bg;
+
+	.header,
+	.footer {
+		background-color: linear-gradient(
+			circle,
+			rgba(2, 0, 36, 1) 0%,
+			rgba(9, 9, 121, 1) 35%,
+			rgba(0, 212, 255, 1) 100%
+		);
+		color: $dark-color;
+	}
+
+	.sidebar {
+		background: rgb(26, 20, 139);
+		background: linear-gradient(
+			circle,
+			rgba(2, 0, 36, 1) 0%,
+			rgba(9, 9, 121, 1) 35%,
+			rgba(0, 212, 255, 1) 100%
+		);
+		color: $dark-color;
+	}
+
+	.content {
+		background: rgb(7, 2, 107);
+		background: linear-gradient(
+			circle,
+			rgba(2, 0, 36, 1) 0%,
+			rgba(9, 9, 121, 1) 35%,
+			rgba(0, 212, 255, 1) 100%
+		);
 		color: $dark-color;
 	}
 }
@@ -19,9 +52,19 @@ todo:  DARK MODE
 .light-mode {
 	background-color: $light-bg;
 	color: $light-color;
-	.modal-header,
-	.modal-body,
-	.modal-footer {
+
+	.header,
+	.footer {
+		background-color: lighten($light-bg, 10%);
+		color: $light-color;
+	}
+
+	.sidebar {
+		background-color: lighten($light-bg, 20%);
+		color: $light-color;
+	}
+
+	.content {
 		background-color: $light-bg;
 		color: $light-color;
 	}
@@ -46,6 +89,7 @@ todo:  DARK MODE
 		rgba(0, 212, 255, 1) 100%
 	);
 }
+
 /* *************************************************
 ? ***************STILE DELLA PAGINA HOME***************
 todo:  Home.jsx
@@ -59,7 +103,13 @@ todo:  Home.jsx
 	margin: 0; /* Rimuovere margini per evitare overflow */
 	font-size: 2rem; /* Dimensione del testo di base */
 }
+.ombrello {
+	width: 100px;
+}
 
+.icona-home {
+	height: 50px;
+}
 .bande {
 	display: flex;
 	flex-direction: column;
@@ -76,14 +126,14 @@ todo:  Home.jsx
 		position: absolute;
 	}
 	.orari {
-		top: $offset-lg;
-		left: 5%;
-		transform: translateY(-$offset-lg);
+		top: 10%;
+		left: 10%;
+		transform: translateY(-10%);
 	}
 	.entra {
-		bottom: $offset-lg;
-		right: 5%;
-		transform: translateY($offset-lg);
+		bottom: 80%;
+		right: 10%;
+		transform: translateY(-80%);
 	}
 }
 
@@ -111,12 +161,14 @@ todo:  Home.jsx
 	}
 	.centrale {
 		.orari {
-			top: $offset-lg;
-			transform: translateY(-$offset-lg);
+			top: 35%;
+			transform: translateY(-35%);
+			transform: translateX(90%);
 		}
 		.entra {
-			bottom: $offset-lg;
-			transform: translateY($offset-lg);
+			bottom: 50%;
+			transform: translateY(-50%);
+			transform: translateX(-90%);
 		}
 	}
 }
@@ -130,12 +182,14 @@ todo:  Home.jsx
 	}
 	.centrale {
 		.orari {
-			top: $offset-md;
-			transform: translateY(-$offset-md);
+			top: 35%;
+			transform: translateY(-35%);
+			transform: translateX(50%);
 		}
 		.entra {
-			bottom: $offset-md;
-			transform: translateY($offset-md);
+			bottom: 50%;
+			transform: translateY(-50%);
+			transform: translateX(-50%);
 		}
 	}
 }
@@ -149,12 +203,12 @@ todo:  Home.jsx
 	}
 	.centrale {
 		.orari {
-			top: $offset-sm;
-			transform: translateY(-$offset-sm);
+			top: 20%;
+			transform: translateY(-20%);
 		}
 		.entra {
-			bottom: $offset-sm;
-			transform: translateY($offset-sm);
+			bottom: 60%;
+			transform: translateY(-60%);
 		}
 	}
 }
@@ -168,12 +222,12 @@ todo:  Home.jsx
 	}
 	.centrale {
 		.orari {
-			top: $offset-xs;
-			transform: translateY(-$offset-xs);
+			top: 10%;
+			transform: translateY(-10%);
 		}
 		.entra {
-			bottom: $offset-xs;
-			transform: translateY($offset-xs);
+			bottom: 70%;
+			transform: translateY(-70%);
 		}
 	}
 }
@@ -194,5 +248,56 @@ todo:  Home.jsx
 @media (max-width: 480px) {
 	.bande h2 {
 		font-size: 1.2rem;
+	}
+}
+
+/* General Layout Styles */
+.layout {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+/* *************************************************
+? ***************STILE DELLA PAGINA MainLayout***************
+todo:  MainLayout.jsx
+************************************************* */
+.header,
+.footer {
+	padding: 1rem;
+	text-align: center;
+}
+
+.main {
+	display: flex;
+	flex: 1;
+	overflow: hidden;
+}
+
+.sidebar {
+	padding: 1rem;
+	width: 250px; /* Fixed width for the sidebar */
+	overflow-y: auto;
+}
+
+.content {
+	flex: 1;
+	padding: 1rem;
+	overflow-y: auto;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+	.main {
+		flex-direction: column;
+	}
+
+	.sidebar {
+		width: 100%;
+		height: auto;
+		order: 2; /* Ensure sidebar appears below the content on small screens */
+	}
+
+	.content {
+		order: 1; /* Ensure content appears above the sidebar on small screens */
 	}
 }

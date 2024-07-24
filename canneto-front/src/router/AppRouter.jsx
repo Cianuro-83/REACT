@@ -3,6 +3,7 @@ import HomeLayout from '../components/layout/HomeLayout';
 import MainLayout from '../components/layout/MainLayout';
 import ErrorPage from '../pages/ErrorPages';
 import { lazy, Suspense } from 'react';
+import RealHome from '../pages/RealHome';
 
 // LAZY LOADING ROUTES
 const Home = lazy(() => import('../pages/Home'));
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
 		element: <MainLayout />,
 		errorElement: <ErrorPage />,
 		children: [
+			{
+				path: 'realhome',
+				element: <RealHome />,
+			},
 			// Altre rotte per MainLayout
 			{
 				path: '*',
