@@ -331,3 +331,37 @@ todo:  MainLayout.jsx
 ? ***************STILE DELLA PAGINA MainLayout***************
 todo:  Sidebar.jsx
 ************************************************* */
+.rfc-Sidebar {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 1rem;
+	.btn {
+		width: 100%;
+	}
+}
+
+.rfc-Sidebar > div {
+	display: flex;
+	flex-direction: column;
+	width: 220px; /* To make buttons occupy full width on smaller screens */
+}
+
+.btn {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+	.rfc-Sidebar > div {
+		flex-direction: row;
+		flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+		justify-content: center;
+	}
+	.btn {
+		width: auto; /* Buttons will now auto-size based on content */
+		margin: 5px; /* Adds horizontal and vertical spacing */
+	}
+}
