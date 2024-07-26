@@ -95,6 +95,9 @@ todo:  DARK MODE
 ? ***************STILE DELLA PAGINA HOME***************
 todo:  Home.jsx
 ************************************************* */
+/* Container principale */
+/* Container principale */
+/* Container principale */
 .rfc-Home {
 	overflow: hidden;
 	display: flex;
@@ -105,35 +108,80 @@ todo:  Home.jsx
 	font-size: 2rem;
 }
 
-/* General Layout Styles */
+/* Stili generali del layout */
 .layout {
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
 }
+
 .titolo {
 	font-size: 3rem;
 	color: whitesmoke;
 	display: flex;
 	justify-content: center;
 	img {
-		width: 200px;
+		width: 50%;
+		max-width: 200px; /* Massima larghezza dell'immagine */
+		height: auto;
+		margin: 0 1rem;
+	}
+	h1 {
+		font-size: 2.5rem; /* Font size per schermi desktop */
+		margin: 1rem 0;
 	}
 }
+
 .holy {
 	display: flex;
 	justify-content: center;
 }
+
 .madonna {
 	height: 70vh;
-	display: flex;
-	justify-content: center;
 }
+
 .action {
 	display: flex;
 	justify-content: center;
+	gap: 1rem; /* Spaziatura tra i bottoni */
 	.btn {
-		width: 300px;
+		width: 300px; /* Larghezza fissa per desktop */
+		min-width: 150px; /* Larghezza minima per assicurare leggibilità */
+	}
+}
+
+/* Media query per schermi più piccoli */
+@media (max-width: 768px) {
+	.titolo {
+		font-size: 2rem; /* Riduce la dimensione del font sui dispositivi più piccoli */
+	}
+	.titolo img {
+		width: 70%; /* Adatta la dimensione dell'immagine su schermi più piccoli */
+		max-width: 150px; /* Nuova larghezza massima per schermi più piccoli */
+	}
+	.titolo h1 {
+		font-size: 2rem; /* Riduce ulteriormente la dimensione del font dell'h1 */
+	}
+	.action .btn {
+		width: 200px; /* Larghezza fissa ridotta per dispositivi più piccoli */
+	}
+}
+
+/* Media query per schermi molto piccoli */
+@media (max-width: 480px) {
+	.titolo {
+		font-size: 1.5rem; /* Riduci ulteriormente la dimensione del font */
+	}
+	.titolo img {
+		width: 80%; /* Adatta ancora di più la dimensione dell'immagine */
+		max-width: 100px; /* Nuova larghezza massima per schermi molto piccoli */
+	}
+	.titolo h1 {
+		font-size: 1.5rem; /* Dimensione del font per schermi molto piccoli */
+	}
+	.action .btn {
+		width: 150px; /* Larghezza fissa ridotta per schermi molto piccoli */
 	}
 }
 
