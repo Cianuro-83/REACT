@@ -95,9 +95,7 @@ todo:  DARK MODE
 ? ***************STILE DELLA PAGINA HOME***************
 todo:  Home.jsx
 ************************************************* */
-/* Container principale */
-/* Container principale */
-/* Container principale */
+
 .rfc-Home {
 	overflow: hidden;
 	display: flex;
@@ -122,12 +120,12 @@ todo:  Home.jsx
 	justify-content: center;
 	img {
 		width: 50%;
-		max-width: 200px; /* Massima larghezza dell'immagine */
+		max-width: 200px;
 		height: auto;
 		margin: 0 1rem;
 	}
 	h1 {
-		font-size: 2.5rem; /* Font size per schermi desktop */
+		font-size: 2.5rem;
 		margin: 1rem 0;
 	}
 }
@@ -144,44 +142,42 @@ todo:  Home.jsx
 .action {
 	display: flex;
 	justify-content: center;
-	gap: 1rem; /* Spaziatura tra i bottoni */
+	gap: 1rem;
 	.btn {
-		width: 300px; /* Larghezza fissa per desktop */
-		min-width: 150px; /* Larghezza minima per assicurare leggibilità */
+		width: 300px;
+		min-width: 150px;
 	}
 }
 
-/* Media query per schermi più piccoli */
 @media (max-width: 768px) {
 	.titolo {
-		font-size: 2rem; /* Riduce la dimensione del font sui dispositivi più piccoli */
+		font-size: 2rem;
 	}
 	.titolo img {
-		width: 70%; /* Adatta la dimensione dell'immagine su schermi più piccoli */
-		max-width: 150px; /* Nuova larghezza massima per schermi più piccoli */
+		width: 70%;
+		max-width: 150px;
 	}
 	.titolo h1 {
-		font-size: 2rem; /* Riduce ulteriormente la dimensione del font dell'h1 */
+		font-size: 2rem;
 	}
 	.action .btn {
-		width: 200px; /* Larghezza fissa ridotta per dispositivi più piccoli */
+		width: 200px;
 	}
 }
 
-/* Media query per schermi molto piccoli */
 @media (max-width: 480px) {
 	.titolo {
-		font-size: 1.5rem; /* Riduci ulteriormente la dimensione del font */
+		font-size: 1.5rem;
 	}
 	.titolo img {
-		width: 80%; /* Adatta ancora di più la dimensione dell'immagine */
-		max-width: 100px; /* Nuova larghezza massima per schermi molto piccoli */
+		width: 80%;
+		max-width: 100px;
 	}
 	.titolo h1 {
-		font-size: 1.5rem; /* Dimensione del font per schermi molto piccoli */
+		font-size: 1.5rem;
 	}
 	.action .btn {
-		width: 150px; /* Larghezza fissa ridotta per schermi molto piccoli */
+		width: 150px;
 	}
 }
 
@@ -205,7 +201,7 @@ todo:  MainLayout.jsx
 
 .sidebar {
 	padding: 1rem;
-	width: 250px; /* Fixed width for the sidebar */
+	width: 250px;
 	overflow-y: auto;
 }
 
@@ -215,44 +211,63 @@ todo:  MainLayout.jsx
 	overflow-y: auto;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
 	.layout {
-		overflow-y: auto; /* Permetti lo scroll dell'intera pagina */
-		height: auto; /* Altezza automatica per adattarsi al contenuto */
+		overflow-y: auto;
+		height: auto;
 	}
 
 	.main {
 		flex-direction: column;
-		overflow: visible; /* Permetti l'overflow visibile */
+		overflow: visible;
 	}
 
 	.sidebar {
 		width: 100%;
 		height: auto;
-		order: 2; /* Sidebar sotto il contenuto in schermi piccoli */
+		order: 2;
 	}
 
 	.content {
-		order: 1; /* Contenuto sopra la sidebar in schermi piccoli */
-		overflow-y: visible; /* Rimuovi lo scroll dal contenuto */
-		height: auto; /* Altezza automatica per adattarsi al contenuto */
+		order: 1;
+		overflow-y: visible;
+		height: auto;
 	}
 }
+/* *************************************************
+? ***************STILE DELLA COMPONENTE Navbart***************
+todo:  NavBar.jsx
+************************************************* */
 
 .logo {
 	width: 50px;
 }
+.rfc-NavBar {
+	.nav-button .nav-link {
+		color: whitesmoke;
+		font-weight: bolder;
+	}
+	.dropdown-menu {
+		background-color: #20148b;
+	}
+	.dropdown-menu .dropdown-item {
+		color: #57c7f5;
+		&:hover {
+			color: #20148b;
+			font-weight: bolder;
+			scale: 1.1;
+		}
+	}
+}
 
-/* *************** Styles for buttons in mobile version *************** */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 	.rfc-NavBar {
 		ul.navbar-nav {
 			justify-content: center;
 			width: 100%;
 		}
 		li.nav-item {
-			width: 300px; /* Width for each nav item */
+			width: 300px;
 			text-align: center;
 			margin-bottom: 10px;
 		}
@@ -283,7 +298,7 @@ todo:  Sidebar.jsx
 .rfc-Sidebar > div {
 	display: flex;
 	flex-direction: column;
-	width: 220px; /* To make buttons occupy full width on smaller screens */
+	width: 220px;
 }
 
 .btn {
@@ -294,11 +309,11 @@ todo:  Sidebar.jsx
 @media (min-width: 768px) {
 	.rfc-Sidebar > div {
 		flex-direction: row;
-		flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
+		flex-wrap: wrap;
 		justify-content: center;
 	}
 	.btn {
-		width: auto; /* Buttons will now auto-size based on content */
-		margin: 5px; /* Adds horizontal and vertical spacing */
+		width: auto;
+		margin: 5px;
 	}
 }
