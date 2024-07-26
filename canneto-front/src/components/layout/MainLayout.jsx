@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import NavBar from '../NavBar';
 import Sidebar from '../Sidebar';
+import Footer from '../Footer';
 
 const MainLayout = () => {
 	const isDarkMode = useSelector((state) => state.darkMode.darkMode);
@@ -1305,7 +1306,9 @@ const MainLayout = () => {
 					<Outlet />
 				</div>
 			</main>
-			<footer className="footer">Footer</footer>
+			<footer className="footer">
+				<Footer />
+			</footer>
 		</div>
 	);
 };
