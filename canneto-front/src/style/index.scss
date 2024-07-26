@@ -88,6 +88,7 @@ todo:  DARK MODE
 		rgba(9, 9, 121, 1) 35%,
 		rgba(0, 212, 255, 1) 100%
 	);
+	height: 100vh;
 }
 
 /* *************************************************
@@ -96,159 +97,12 @@ todo:  Home.jsx
 ************************************************* */
 .rfc-Home {
 	overflow: hidden;
-}
-
-.bande h2 {
-	color: white; /* Testo bianco */
-	margin: 0; /* Rimuovere margini per evitare overflow */
-	font-size: 2rem; /* Dimensione del testo di base */
-}
-.ombrello {
-	width: 100px;
-}
-
-.icona-home {
-	height: 50px;
-}
-.bande {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	max-height: 5vh; /* Altezza massima fissa a 5vh */
-	flex-shrink: 0;
-}
-
-.centrale {
-	position: relative;
-	button {
-		position: absolute;
-	}
-	.orari {
-		top: 10%;
-		left: 10%;
-		transform: translateY(-10%);
-	}
-	.entra {
-		bottom: 80%;
-		right: 10%;
-		transform: translateY(-80%);
-	}
-}
-
-.img-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100vw;
-}
-
-.sfondo {
-	height: 90%;
-	width: 100%;
-	object-fit: contain;
-	object-position: center;
-}
-
-/* Altezza delle bande responsive e dimensione del testo */
-@media (min-width: 1200px) {
-	.bande h2 {
-		font-size: 2.5rem;
-	}
-	.img-container {
-		height: 90vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
-	}
-	.centrale {
-		.orari {
-			top: 35%;
-			transform: translateY(-35%);
-			transform: translateX(90%);
-		}
-		.entra {
-			bottom: 50%;
-			transform: translateY(-50%);
-			transform: translateX(-90%);
-		}
-	}
-}
-
-@media (max-width: 1199px) and (min-width: 768px) {
-	.bande h2 {
-		font-size: 2rem;
-	}
-	.img-container {
-		height: 90.4vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
-	}
-	.centrale {
-		.orari {
-			top: 35%;
-			transform: translateY(-35%);
-			transform: translateX(50%);
-		}
-		.entra {
-			bottom: 50%;
-			transform: translateY(-50%);
-			transform: translateX(-50%);
-		}
-	}
-}
-
-@media (max-width: 767px) and (min-width: 480px) {
-	.bande h2 {
-		font-size: 1.5rem;
-	}
-	.img-container {
-		height: 91.6vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
-	}
-	.centrale {
-		.orari {
-			top: 20%;
-			transform: translateY(-20%);
-		}
-		.entra {
-			bottom: 60%;
-			transform: translateY(-60%);
-		}
-	}
-}
-
-@media (max-width: 479px) {
-	.bande h2 {
-		font-size: 1.2rem;
-	}
-	.img-container {
-		height: 92.2vh; /* Adatta altezza immagine tenendo conto dello spazio per le bande */
-	}
-	.centrale {
-		.orari {
-			top: 10%;
-			transform: translateY(-10%);
-		}
-		.entra {
-			bottom: 70%;
-			transform: translateY(-70%);
-		}
-	}
-}
-
-/* Media queries per rendere il testo responsive */
-@media (max-width: 1200px) {
-	.bande h2 {
-		font-size: 2rem;
-	}
-}
-
-@media (max-width: 768px) {
-	.bande h2 {
-		font-size: 1.5rem;
-	}
-}
-
-@media (max-width: 480px) {
-	.bande h2 {
-		font-size: 1.2rem;
-	}
+	height: 100vh;
+	color: whitesmoke;
+	background-color: red;
+	font-size: 2rem;
 }
 
 /* General Layout Styles */
@@ -256,6 +110,31 @@ todo:  Home.jsx
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
+}
+.titolo {
+	font-size: 3rem;
+	color: whitesmoke;
+	display: flex;
+	justify-content: center;
+	img {
+		width: 200px;
+	}
+}
+.holy {
+	display: flex;
+	justify-content: center;
+}
+.madonna {
+	height: 70vh;
+	display: flex;
+	justify-content: center;
+}
+.action {
+	display: flex;
+	justify-content: center;
+	.btn {
+		width: 300px;
+	}
 }
 
 /* *************************************************

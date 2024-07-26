@@ -1,45 +1,30 @@
-import { Link } from 'react-router-dom';
-
-const Home = () => {
+export default function Home() {
 	return (
-		<div className="rfc-Home">
-			<div className="bande">
-				<h2 className="text-uppercase text-center mt-5 fw-bolder">
-					basilica - santuario regionale
-				</h2>
+		<>
+			<div className="text-uppercase text-center fw-bolder titolo">
+				<img src="/img/OMBRELLO.svg" alt="" />
+				<h1>
+					basilica - santuario regionale <br />
+					santa maria di canneto
+				</h1>
+				<img src="/img/OMBRELLO.svg" alt="" />
 			</div>
-			<div className="centrale">
+			<div className="holy">
+				<img src="/img/MADONNA.webp" alt="" className="madonna" />
+			</div>
+			<div className="action">
 				<button
 					type="button"
-					className="btn btn-success btn-lg orari text-uppercase fw-bolder">
-					<img src="/img/orari.webp" alt="" className="icona-home" />
-					<br /> orari
+					className="btn btn-warning text-uppercase fw-bolder me-5 btn-lg">
+					orari
 				</button>
 
-				<Link to="/app/realhome">
-					<div className="img-container">
-						<img
-							src="/img/MADONNA.webp"
-							alt="Madonna"
-							className="sfondo"
-						/>
-					</div>
-					<button
-						type="button"
-						className="btn btn-success btn-lg entra text-uppercase fw-bolder">
-						<img src="/img/entra.WEBP" alt="" className="icona-home" />{' '}
-						<br />
-						entra
-					</button>
-				</Link>
+				<button
+					type="button"
+					className="btn btn-primary text-uppercase fw-bolder btn-lg">
+					entra nel sito
+				</button>
 			</div>
-			<div className="bande py-3">
-				<h2 className="text-uppercase text-center mb-5 fw-bolder">
-					Santa maria di canneto
-				</h2>
-			</div>
-		</div>
+		</>
 	);
-};
-
-export default Home;
+}
