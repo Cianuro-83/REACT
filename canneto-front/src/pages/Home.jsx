@@ -4,13 +4,17 @@ export default function Home() {
 	return (
 		<>
 			<div className="text-uppercase text-center fw-bolder titolo">
-				<h1>
-					basilica - santuario regionale <br />
-					santa maria di canneto
-				</h1>
+				<Link to="/app/realhome">
+					<h1>
+						basilica - santuario regionale <br />
+						santa maria di canneto
+					</h1>
+				</Link>
 			</div>
 			<div className="holy">
-				<img src="/img/MADONNA.webp" alt="" className="madonna" />
+				<Link to="/app/realhome">
+					<img src="/img/MADONNA.webp" alt="" className="madonna" />
+				</Link>
 			</div>
 			<div className="action">
 				<button

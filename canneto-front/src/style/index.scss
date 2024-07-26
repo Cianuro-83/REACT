@@ -189,6 +189,8 @@ todo:  Home.jsx
 ? ***************STILE DELLA PAGINA MainLayout***************
 todo:  MainLayout.jsx
 ************************************************* */
+.main-layout {
+}
 .header,
 .footer {
 	padding: 1rem;
@@ -215,18 +217,26 @@ todo:  MainLayout.jsx
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+	.layout {
+		overflow-y: auto; /* Permetti lo scroll dell'intera pagina */
+		height: auto; /* Altezza automatica per adattarsi al contenuto */
+	}
+
 	.main {
 		flex-direction: column;
+		overflow: visible; /* Permetti l'overflow visibile */
 	}
 
 	.sidebar {
 		width: 100%;
 		height: auto;
-		order: 2; /* Ensure sidebar appears below the content on small screens */
+		order: 2; /* Sidebar sotto il contenuto in schermi piccoli */
 	}
 
 	.content {
-		order: 1; /* Ensure content appears above the sidebar on small screens */
+		order: 1; /* Contenuto sopra la sidebar in schermi piccoli */
+		overflow-y: visible; /* Rimuovi lo scroll dal contenuto */
+		height: auto; /* Altezza automatica per adattarsi al contenuto */
 	}
 }
 
