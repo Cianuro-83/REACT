@@ -262,23 +262,42 @@ todo:  NavBar.jsx
 
 @media (max-width: 992px) {
 	.rfc-NavBar {
-		ul.navbar-nav {
+		.navbar-nav {
+			display: flex;
 			justify-content: center;
 			width: 100%;
 		}
-		li.nav-item {
+		.nav-item {
+			display: flex;
+			justify-content: center;
 			width: 300px;
 			text-align: center;
 			margin-bottom: 10px;
 		}
 		.nav-button {
 			width: 100%;
+			transform: translateX(100%);
 		}
 		.nav-link {
 			display: block;
 		}
 	}
 }
+@media (max-width: 800px) {
+	.rfc-NavBar {
+		.nav-button {
+			transform: translateX(50%);
+		}
+	}
+}
+@media (max-width: 500px) {
+	.rfc-NavBar {
+		.nav-button {
+			transform: translateX(25%);
+		}
+	}
+}
+
 /* *************************************************
 ? ***************STILE DELLA PAGINA MainLayout***************
 todo:  Sidebar.jsx
