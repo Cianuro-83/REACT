@@ -336,6 +336,10 @@ todo:  Sidebar.jsx
 		margin: 5px;
 	}
 }
+.intestazione {
+	width: 100%;
+	top: 0;
+}
 
 /* *************************************************
 ? ***************STILE DEL COMPONENTE FOOTER***************
@@ -343,8 +347,21 @@ todo:  Footer.jsx
 ************************************************* */
 .rfc-Footer {
 	font-size: 0.5rem;
-	span {
+	text-align: center;
+	.rfc-Footer span {
 		color: #20148b;
+	}
+
+	.social-icons {
+		display: flex;
+		justify-content: center;
+		margin-top: 1rem;
+	}
+
+	.social-icons img {
+		max-width: 25px;
+		height: auto;
+		margin: 0 0.5rem;
 	}
 }
 /* *************************************************
@@ -374,5 +391,18 @@ todo:  Orari.jsx
 		cursor: pointer;
 		background-color: rgba(0, 0, 0, 0.9);
 		z-index: 9999;
+	}
+}
+/* *************************************************
+? ***************STILE DELLA PAGINA EVVIVA MARIA***************
+todo:  EvvivaMaria.jsx
+************************************************* */
+.rfc-EvvivaMaria {
+	.evvivamaria {
+		text-align: center;
+		max-width: 600px;
+		margin: 0 auto;
+		white-space: pre-wrap;
+		line-height: 1.6;
 	}
 }

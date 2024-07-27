@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomeLayout from '../components/layout/HomeLayout';
 import MainLayout from '../components/layout/MainLayout';
+import OrariLayout from '../components/layout/OrariLayout';
 import ErrorPage from '../pages/ErrorPages';
 import { lazy, Suspense } from 'react';
 
@@ -10,6 +11,12 @@ const NotFoundPage = lazy(() => import('../pages/NotFound'));
 const RealHome = lazy(() => import('../pages/RealHome'));
 const Orari = lazy(() => import('../pages/Orari'));
 const Offerte = lazy(() => import('../pages/Offerte'));
+const InniHome = lazy(() => import('../pages/inni/InniHome'));
+const EvvivaMaria = lazy(() => import('../pages/inni/EvvivaMaria'));
+const Gemmiti = lazy(() => import('../pages/inni/Gemmiti'));
+const AffettiPensieri = lazy(() => import('../pages/inni/AffettiPensieri'));
+const InnoIncoronazione = lazy(() => import('../pages/inni/InnoIncoronazione'));
+const CelesteMessaggera = lazy(() => import('../pages/inni/CelesteMessaggera'));
 
 // ROUTER
 const router = createBrowserRouter([
@@ -34,18 +41,54 @@ const router = createBrowserRouter([
 				element: <RealHome />,
 			},
 
-			{
-				path: 'orari',
-				element: <Orari />,
-			},
+			// {
+			// 	path: 'orari',
+			// 	element: <Orari />,
+			// },
 			{
 				path: 'offerte',
 				element: <Offerte />,
 			},
+			{
+				path: 'inni/home',
+				element: <InniHome />,
+			},
+			{
+				path: 'inni/evvivamaria',
+				element: <EvvivaMaria />,
+			},
+			{
+				path: 'inni/incoronazione',
+				element: <InnoIncoronazione />,
+			},
+			{
+				path: 'inni/messaggera',
+				element: <CelesteMessaggera />,
+			},
+			{
+				path: 'inni/aquino',
+				element: <AffettiPensieri />,
+			},
+			{
+				path: 'inni/gemmiti',
+				element: <Gemmiti />,
+			},
+
 			// Altre rotte per MainLayout
 			{
 				path: '*',
 				element: <NotFoundPage />,
+			},
+		],
+	},
+	{
+		path: '/orari',
+		element: <OrariLayout />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: 'orari',
+				element: <Orari />,
 			},
 		],
 	},

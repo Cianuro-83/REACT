@@ -4,9 +4,6 @@ const NavBar = () => {
 		<div className="rfc-NavBar">
 			<nav className="navbar navbar-expand-lg">
 				<div className="container-fluid">
-					<a className="navbar-brand" href="#">
-						<img src="/img/Madonna-nav.webp" className="logo" alt="" />
-					</a>
 					<button
 						className="navbar-toggler"
 						type="button"

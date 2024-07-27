@@ -21,12 +21,6 @@ const MainLayout = () => {
 					<Sidebar />
 				</aside>
 				<div className="content">
-					<img
-						className="intestazione"
-						src="../img/frontespizio.webp"
-						alt=""
-					/>
-
 					<Outlet />
 				</div>
 			</main>
