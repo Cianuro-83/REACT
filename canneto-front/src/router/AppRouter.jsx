@@ -9,6 +9,7 @@ const Home = lazy(() => import('../pages/Home'));
 const NotFoundPage = lazy(() => import('../pages/NotFound'));
 const RealHome = lazy(() => import('../pages/RealHome'));
 const Orari = lazy(() => import('../pages/Orari'));
+const Offerte = lazy(() => import('../pages/Offerte'));
 
 // ROUTER
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
 			{
 				path: 'orari',
 				element: <Orari />,
+			},
+			{
+				path: 'offerte',
+				element: <Offerte />,
 			},
 			// Altre rotte per MainLayout
 			{

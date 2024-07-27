@@ -17,11 +17,13 @@ export default function Home() {
 				</Link>
 			</div>
 			<div className="action">
-				<button
-					type="button"
-					className="btn btn-warning text-uppercase fw-bolder me-5 btn-lg">
-					orari
-				</button>
+				<Link to="/app/orari">
+					<button
+						type="button"
+						className="btn btn-warning text-uppercase fw-bolder me-5 btn-lg">
+						orari
+					</button>
+				</Link>
 
 				<Link to="/app/realhome">
 					<button

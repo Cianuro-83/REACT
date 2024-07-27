@@ -21,9 +21,9 @@ const Sidebar = () => {
 					</a>
 				</button>
 				<button type="button" className="btn btn-primary nav-button fs-5">
-					<a className="nav-link" href="#">
+					<Link to="/app/offerte" className="nav-link" href="#">
 						OFFERTE
-					</a>
+					</Link>
 				</button>
 				<button type="button" className="btn btn-primary nav-button fs-5">
 					<a className="nav-link" href="#">
