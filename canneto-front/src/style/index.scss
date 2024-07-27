@@ -337,10 +337,42 @@ todo:  Sidebar.jsx
 	}
 }
 
-/* Footer.css */
+/* *************************************************
+? ***************STILE DEL COMPONENTE FOOTER***************
+todo:  Footer.jsx
+************************************************* */
 .rfc-Footer {
 	font-size: 0.5rem;
 	span {
 		color: #20148b;
+	}
+}
+/* *************************************************
+? ***************STILE DELLA PAGINA Orari***************
+todo:  Orari.jsx
+************************************************* */
+.orari-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img.responsive {
+		width: 100%;
+		max-width: 100%;
+		object-fit: contain;
+		height: 75vh;
+		cursor: pointer; /* Cambia il cursore per indicare che l'immagine è cliccabile */
+	}
+
+	img.fullscreen {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		object-fit: contain;
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.9);
+		z-index: 9999;
 	}
 }

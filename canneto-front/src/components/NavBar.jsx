@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 const NavBar = () => {
 	return (
 		<div className="rfc-NavBar">
@@ -24,12 +25,13 @@ const NavBar = () => {
 								<button
 									type="button"
 									className="btn btn-primary nav-button">
-									<a
+									<Link
+										to="/app/realhome"
 										className="nav-link active fs-5"
 										aria-current="page"
 										href="#">
 										Home
-									</a>
+									</Link>
 								</button>
 							</li>
 							<li className="nav-item dropdown me-3 mb-md-3">

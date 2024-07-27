@@ -3,11 +3,12 @@ import HomeLayout from '../components/layout/HomeLayout';
 import MainLayout from '../components/layout/MainLayout';
 import ErrorPage from '../pages/ErrorPages';
 import { lazy, Suspense } from 'react';
-import RealHome from '../pages/RealHome';
 
 // LAZY LOADING ROUTES
 const Home = lazy(() => import('../pages/Home'));
 const NotFoundPage = lazy(() => import('../pages/NotFound'));
+const RealHome = lazy(() => import('../pages/RealHome'));
+const Orari = lazy(() => import('../pages/Orari'));
 
 // ROUTER
 const router = createBrowserRouter([
@@ -30,6 +31,11 @@ const router = createBrowserRouter([
 			{
 				path: 'realhome',
 				element: <RealHome />,
+			},
+
+			{
+				path: 'orari',
+				element: <Orari />,
 			},
 			// Altre rotte per MainLayout
 			{
