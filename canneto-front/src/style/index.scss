@@ -406,3 +406,32 @@ todo:  EvvivaMaria.jsx
 		line-height: 1.6;
 	}
 }
+/* *************************************************
+? ***************STILE DELLA PAGINA INNO DELL'INCORONAZIONE***************
+todo:  Incoronazione.jsx
+************************************************* */
+.rfc-InnoIncoronazione {
+	.container {
+		display: flex;
+		justify-content: center;
+	}
+
+	.testo {
+		max-width: 800px;
+		width: 100%;
+		margin: 0 auto;
+		margin-top: 30px;
+		box-sizing: border-box;
+	}
+
+	.strofa,
+	.ritornello {
+		text-align: left; /* Mantiene il testo allineato a sinistra */
+	}
+
+	/* Stile per la classe ritornello */
+	.ritornello {
+		font-weight: bold;
+		font-style: italic;
+	}
+}
