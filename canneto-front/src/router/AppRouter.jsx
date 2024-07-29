@@ -17,6 +17,11 @@ const Gemmiti = lazy(() => import('../pages/inni/Gemmiti'));
 const AffettiPensieri = lazy(() => import('../pages/inni/AffettiPensieri'));
 const InnoIncoronazione = lazy(() => import('../pages/inni/InnoIncoronazione'));
 const CelesteMessaggera = lazy(() => import('../pages/inni/CelesteMessaggera'));
+const EditoriaHome = lazy(() => import('../pages/editoria/EditoriaHome'));
+const Bollettino = lazy(() => import('../pages/editoria/Bollettino'));
+const Quaderni = lazy(() => import('../pages/editoria/Quaderni'));
+const Calendario = lazy(() => import('../pages/editoria/Calendario'));
+const Testi = lazy(() => import('../pages/editoria/Testi'));
 
 // ROUTER
 const router = createBrowserRouter([
@@ -41,10 +46,6 @@ const router = createBrowserRouter([
 				element: <RealHome />,
 			},
 
-			// {
-			// 	path: 'orari',
-			// 	element: <Orari />,
-			// },
 			{
 				path: 'offerte',
 				element: <Offerte />,
@@ -72,6 +73,26 @@ const router = createBrowserRouter([
 			{
 				path: 'inni/gemmiti',
 				element: <Gemmiti />,
+			},
+			{
+				path: 'editoria/home',
+				element: <EditoriaHome />,
+			},
+			{
+				path: 'editoria/bollettino',
+				element: <Bollettino />,
+			},
+			{
+				path: 'editoria/quaderni',
+				element: <Quaderni />,
+			},
+			{
+				path: 'editoria/calendari',
+				element: <Calendario />,
+			},
+			{
+				path: 'editoria/testi',
+				element: <Testi />,
 			},
 
 			// Altre rotte per MainLayout
