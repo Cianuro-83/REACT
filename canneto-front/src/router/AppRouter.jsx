@@ -22,6 +22,17 @@ const Bollettino = lazy(() => import('../pages/editoria/Bollettino'));
 const Quaderni = lazy(() => import('../pages/editoria/Quaderni'));
 const Calendario = lazy(() => import('../pages/editoria/Calendario'));
 const Testi = lazy(() => import('../pages/editoria/Testi'));
+const PellegrinaggioHome = lazy(() =>
+	import('../pages/pellegrinaggio/PellegrinaggioHome')
+);
+const PellegrinaggioCompagnie = lazy(() =>
+	import('../pages/pellegrinaggio/PellegrinaggioCompagnie')
+);
+const PellegrinnaggioFeste = lazy(() =>
+	import('../pages/pellegrinaggio/PellegrinnaggioFeste')
+);
+const Contatti = lazy(() => import('../pages/info/Contatti'));
+const ComeRaggingerci = lazy(() => import('../pages/info/ComeRaggingerci'));
 
 // ROUTER
 const router = createBrowserRouter([
@@ -93,6 +104,26 @@ const router = createBrowserRouter([
 			{
 				path: 'editoria/testi',
 				element: <Testi />,
+			},
+			{
+				path: 'pellegrinaggio/home',
+				element: <PellegrinaggioHome />,
+			},
+			{
+				path: 'pellegrinaggio/compagnie',
+				element: <PellegrinaggioCompagnie />,
+			},
+			{
+				path: 'pellegrinaggio/feste',
+				element: <PellegrinnaggioFeste />,
+			},
+			{
+				path: 'info/contatti',
+				element: <Contatti />,
+			},
+			{
+				path: 'info/come-raggiungerci',
+				element: <ComeRaggingerci />,
 			},
 
 			// Altre rotte per MainLayout

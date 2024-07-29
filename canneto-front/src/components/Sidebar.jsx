@@ -26,14 +26,17 @@ const Sidebar = () => {
 					</Link>
 				</button>
 				<button type="button" className="btn btn-primary nav-button fs-5">
-					<a className="nav-link" href="#">
+					<Link
+						to="/app/pellegrinaggio/home"
+						className="nav-link"
+						href="#">
 						PELLEGRINAGGIO
-					</a>
+					</Link>
 				</button>
 				<button type="button" className="btn btn-primary nav-button fs-5">
-					<a className="nav-link" href="#">
+					<Link to="/app/info/contatti" className="nav-link" href="#">
 						INFO
-					</a>
+					</Link>
 				</button>
 			</div>
 		</div>

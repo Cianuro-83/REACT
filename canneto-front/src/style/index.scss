@@ -478,3 +478,31 @@ todo:  Testi.jsx
 		object-fit: contain;
 	}
 }
+/* *************************************************
+? ***************STILE IMMAGINE CENTRATA E RESPONSIVE ***************
+todo:  PellegrinaggioHome.jsx
+************************************************* */
+.rfc-PellegrinaggioHome {
+	max-width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	.image-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 20px 0;
+	}
+
+	.responsive-img {
+		max-width: 100%;
+		height: auto;
+		border-radius: 8px;
+	}
+
+	/* Ensure that the text scales appropriately on smaller screens */
+	@media (max-width: 768px) {
+		.rfc-PellegrinaggioHome h1 {
+			font-size: 1.5em;
+		}
+	}
+}
