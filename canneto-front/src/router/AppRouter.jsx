@@ -4,6 +4,8 @@ import MainLayout from '../components/layout/MainLayout';
 import OrariLayout from '../components/layout/OrariLayout';
 import ErrorPage from '../pages/ErrorPages';
 import { lazy, Suspense } from 'react';
+import Statua from '../pages/Statua';
+import SantAnna from '../pages/SantAnna';
 
 // LAZY LOADING ROUTES
 const Home = lazy(() => import('../pages/Home'));
@@ -33,6 +35,20 @@ const PellegrinnaggioFeste = lazy(() =>
 );
 const Contatti = lazy(() => import('../pages/info/Contatti'));
 const ComeRaggingerci = lazy(() => import('../pages/info/ComeRaggingerci'));
+const Canada = lazy(() => import('../pages/nelMondo/Canada'));
+const India = lazy(() => import('../pages/nelMondo/India'));
+const Messico = lazy(() => import('../pages/nelMondo/Messico'));
+const Peru = lazy(() => import('../pages/nelMondo/Peru'));
+const StatiUniti = lazy(() => import('../pages/nelMondo/StatiUniti'));
+const CenniStorici = lazy(() => import('../pages/storia/CenniStorici'));
+const CultoMariano = lazy(() => import('../pages/storia/CultoMariano'));
+const CultoPagano = lazy(() => import('../pages/storia/CultoPagano'));
+const LaPiaLeggenda = lazy(() => import('../pages/storia/LaPiaLeggenda'));
+const VecchioEdificio = lazy(() => import('../pages/chiesa/VecchioEdificio'));
+const NuovoEdificio = lazy(() => import('../pages/chiesa/NuovoEdificio'));
+const CasaDelPellegrina = lazy(() =>
+	import('../pages/chiesa/CasaDelPellegrina')
+);
 
 // ROUTER
 const router = createBrowserRouter([
@@ -124,6 +140,62 @@ const router = createBrowserRouter([
 			{
 				path: 'info/come-raggiungerci',
 				element: <ComeRaggingerci />,
+			},
+			{
+				path: 'statua',
+				element: <Statua />,
+			},
+			{
+				path: 'sant-anna',
+				element: <SantAnna />,
+			},
+			{
+				path: 'canada',
+				element: <Canada />,
+			},
+			{
+				path: 'india',
+				element: <India />,
+			},
+			{
+				path: 'messico',
+				element: <Messico />,
+			},
+			{
+				path: 'peru',
+				element: <Peru />,
+			},
+			{
+				path: 'stati-uniti',
+				element: <StatiUniti />,
+			},
+			{
+				path: 'storia/cenni-storici',
+				element: <CenniStorici />,
+			},
+			{
+				path: 'storia/culto-mariano',
+				element: <CultoMariano />,
+			},
+			{
+				path: 'storia/culto-pagano',
+				element: <CultoPagano />,
+			},
+			{
+				path: 'storia/pia-leggenda',
+				element: <LaPiaLeggenda />,
+			},
+			{
+				path: 'chiesa/vecchia',
+				element: <VecchioEdificio />,
+			},
+			{
+				path: 'chiesa/nuova',
+				element: <NuovoEdificio />,
+			},
+			{
+				path: 'chiesa/casa-pellegrino',
+				element: <CasaDelPellegrina />,
 			},
 
 			// Altre rotte per MainLayout

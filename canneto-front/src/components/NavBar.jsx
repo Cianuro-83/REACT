@@ -111,22 +111,26 @@ const NavBar = () => {
 								</button>
 							</li>
 							<li className="nav-item me-3 mb-md-3">
-								<button
-									type="button"
-									className="btn btn-primary nav-button fs-5">
-									<a className="nav-link" href="#">
-										STATUA
-									</a>
-								</button>
+								<Link to="/app/statua" className="btn btn-primary">
+									<button
+										type="button"
+										className="btn btn-primary nav-button fs-5">
+										<a className="nav-link" href="#">
+											STATUA
+										</a>
+									</button>
+								</Link>
 							</li>
 							<li className="nav-item me-3 mb-md-3">
-								<button
-									type="button"
-									className="btn btn-primary nav-button fs-5">
-									<a className="nav-link" href="#">
-										S.ANNA
-									</a>
-								</button>
+								<Link to="/app/sant-anna" className="btn btn-primary">
+									<button
+										type="button"
+										className="btn btn-primary nav-button fs-5">
+										<a className="nav-link" href="#">
+											S.ANNA
+										</a>
+									</button>
+								</Link>
 							</li>
 							<li className="nav-item dropdown">
 								<button

@@ -1,10 +1,9 @@
-import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Contatti = () => {
 	const openGoogleMaps = () => {
 		// Coordinate esatte per il luogo di arrivo
-		const destination = '41.678319,13.908228'; // Latitudine e Longitudine di Settefrati
+		const destination = '41.678319,13.908228';
 		const url = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
 		window.open(url, 'Google Maps', 'width=800,height=600');
 	};
@@ -57,7 +56,7 @@ const Contatti = () => {
 						</button>
 					</div>
 				</div>
-				{/* Sezione Aggiunta per Come Raggiungerci */}
+				{/* Come Raggiungerci */}
 				<div className="row mt-4">
 					<div className="col text-center">
 						<p>
