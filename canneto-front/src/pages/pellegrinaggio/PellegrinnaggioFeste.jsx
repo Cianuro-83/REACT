@@ -34,7 +34,7 @@ const PellegrinnaggioFeste = () => {
 						Eucaristica.
 					</p>
 				</div>
-				<div className="image-container">
+				<div className="image-container d-flex justify-content-center">
 					<img
 						src="/img/pellegrinaggio/pellegrinaggio 3.webp"
 						alt="pellegrini a canneto"
@@ -102,7 +102,7 @@ const PellegrinnaggioFeste = () => {
 						partecipare più attivamente alle preghiere.
 					</p>
 				</div>
-				<div className="image-container">
+				<div className="image-container d-flex justify-content-center">
 					<img
 						src="/img/pellegrinaggio/pellegrinaggio 4.webp"
 						alt="pellegrini a canneto"
@@ -116,7 +116,7 @@ const PellegrinnaggioFeste = () => {
 						Valle di Canneto, chiude la giornata.
 					</p>
 				</div>
-				<div className="image-container">
+				<div className="image-container d-flex justify-content-center">
 					<img
 						src="/img/pellegrinaggio/pellegrinaggio 5.webp"
 						alt="pellegrini a canneto"

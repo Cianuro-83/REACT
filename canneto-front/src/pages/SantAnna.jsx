@@ -32,7 +32,7 @@ const SantAnna = () => {
 				Sante Messe ordinarie si tenesse anche una solenne processione con
 				la venerata immagine della Santa per la Valle di Canneto.
 			</p>
-			<div className="d-flex">
+			<div className="d-flex justify-content-center">
 				<div className="image-container">
 					<img
 						src="/img/santanna/anna 1.webp"

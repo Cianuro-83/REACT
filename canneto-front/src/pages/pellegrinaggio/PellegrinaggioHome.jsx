@@ -46,7 +46,7 @@ const PellegrinaggioHome = () => {
 					specialmente in quei cinque giorni dell’indulgenza; in spirito di
 					penitenza e di preghiera, provenienti dai paesi vicini.
 				</p>
-				<div className="image-container">
+				<div className="image-container d-flex justify-content-center">
 					<img
 						src="/img/pellegrinaggio/pellegrinaggio 1.webp"
 						alt="pellegrini a canneto"
@@ -78,7 +78,7 @@ const PellegrinaggioHome = () => {
 					Volturno attraverso il Passo dei Monaci; a Sud dal versante del
 					Melfa e del medio e Basso Liri, via Settefrati e Picinisco.
 				</p>
-				<div className="image-container">
+				<div className="image-container d-flex justify-content-center">
 					<img
 						src="/img/pellegrinaggio/pellegrinaggio 2.webp"
 						alt="pellegrini a canneto"
